@@ -15,9 +15,9 @@ body{
 .aurora{
   position:fixed;inset:-30%;z-index:-2;pointer-events:none;
   background:
-    radial-gradient(circle at 20% 30%, rgba(56,189,248,0.22), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(192,132,252,0.18), transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(249,115,22,0.12), transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(56,189,248,0.25), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(192,132,252,0.2), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(249,115,22,0.15), transparent 50%);
   filter:blur(90px);
   animation:auroraMove 20s ease-in-out infinite;
 }
@@ -42,7 +42,6 @@ body::before{
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:auto;padding:0 24px}
 
-/* Navbar */
 nav{
   position:sticky;top:0;z-index:100;
   background:rgba(9,9,11,0.7);
@@ -54,9 +53,7 @@ nav{
 .brand-box{display:flex;align-items:center;gap:10px}
 .brand{
   font-weight:800;letter-spacing:.08em;font-size:18px;
-  background:linear-gradient(135deg,#fff,#38bdf8);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#38bdf8;
 }
 .cat-anim{
   display:inline-block;font-size:22px;
@@ -77,7 +74,6 @@ nav{
 }
 .links a:not(.service-btn-nav):hover::after{width:100%}
 
-/* Services Active Button */
 .service-btn-nav{
   position:relative;padding:8px 18px;border-radius:20px;font-weight:700;
   color:#fff !important;
@@ -92,7 +88,6 @@ nav{
   100%{background-position:200% 50%;}
 }
 
-/* Page Header */
 .page-head{
   padding:100px 0 60px;
   text-align:center;
@@ -105,40 +100,32 @@ nav{
   border:1px solid rgba(56,189,248,0.3);
   padding:6px 16px;border-radius:20px;
   font-size:12px;letter-spacing:2px;
-  margin-bottom:20px;
+  margin-bottom:20px;font-weight:700;
 }
 .page-head h1{
   font-size:clamp(48px,7vw,88px);
   font-weight:900;line-height:1;margin:0 0 20px;
-  background:linear-gradient(135deg,#fff 0%,#38bdf8 40%,#c084fc 70%,#f97316 100%);
-  background-size:200% 200%;
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:textShine 6s ease-in-out infinite;
-}
-@keyframes textShine{
-  0%,100%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
+  color:#ffffff;
+  text-shadow:0 0 50px rgba(56,189,248,0.5);
 }
 .page-head p{
-  color:#a1a1aa;font-size:18px;
+  color:#d4d4d8;font-size:18px;
   max-width:700px;margin:0 auto;
 }
 
-/* Section Titles */
 .section-title{
   font-size:clamp(28px,4vw,44px);
   font-weight:900;margin:0 0 40px;
-  background:linear-gradient(135deg,#fff,#71717a);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#ffffff;
+  text-shadow:0 0 30px rgba(255,255,255,0.15);
 }
 .section-tag{
-  display:block;font-size:12px;color:#71717a;
+  display:block;font-size:12px;color:#38bdf8;
   letter-spacing:.2em;margin-bottom:8px;text-transform:uppercase;
+  font-weight:700;
 }
 
-/* Overview Cards */
+/* Overview */
 .overview-section{padding:60px 0 40px}
 .overview-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
@@ -165,11 +152,31 @@ nav{
 }
 .overview-card:hover::before{transform:scaleX(1)}
 .overview-icon{font-size:40px;display:block;margin-bottom:16px}
-.overview-card h3{margin:0 0 14px;font-size:20px;font-weight:800;color:#38bdf8}
-.overview-card ul{margin:0;padding-left:20px;color:#a1a1aa;font-size:14px;line-height:2}
+.overview-card h3{
+  margin:0 0 14px;font-size:18px;font-weight:800;
+  color:#38bdf8;
+  text-shadow:0 0 20px rgba(56,189,248,0.3);
+}
+.overview-card ul{
+  margin:0 0 18px;padding-left:20px;
+  color:#e2e2e2;font-size:14px;line-height:2;
+}
 .overview-card ul li::marker{color:#38bdf8}
+.overview-link{
+  display:inline-block;
+  color:#38bdf8;font-size:12px;font-weight:800;
+  letter-spacing:1px;
+  padding:8px 16px;
+  border:1px solid rgba(56,189,248,0.3);
+  border-radius:10px;
+  transition:.3s;
+}
+.overview-link:hover{
+  background:#38bdf8;color:#000;
+  box-shadow:0 0 20px rgba(56,189,248,0.5);
+}
 
-/* Plans Grid */
+/* Plans */
 .plans-section{padding:60px 0 90px}
 .plans-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
@@ -201,20 +208,18 @@ nav{
 }
 .plan-header{text-align:center;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .plan-name{font-size:26px;font-weight:900;margin:0 0 4px}
-.standard .plan-name{color:#38bdf8}
-.gold .plan-name{color:#f97316}
-.premium .plan-name{color:#c084fc}
-.plan-duration{font-size:15px;color:#a1a1aa;margin:0 0 12px}
+.standard .plan-name{color:#38bdf8;text-shadow:0 0 20px rgba(56,189,248,0.4)}
+.gold .plan-name{color:#f97316;text-shadow:0 0 20px rgba(249,115,22,0.4)}
+.premium .plan-name{color:#c084fc;text-shadow:0 0 20px rgba(192,132,252,0.4)}
+.plan-duration{font-size:15px;color:#d4d4d8;margin:0 0 12px}
 .plan-price{
-  font-size:32px;font-weight:900;color:#fff;
-  background:linear-gradient(135deg,#fff,#a1a1aa);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
+  font-size:32px;font-weight:900;
+  color:#fff;
 }
-.plan-subtitle{font-size:12px;color:#71717a;letter-spacing:1px;margin-top:6px;text-transform:uppercase}
+.plan-subtitle{font-size:12px;color:#a1a1aa;letter-spacing:1px;margin-top:6px;text-transform:uppercase}
 .plan-features{list-style:none;padding:0;margin:0 0 24px;flex:1}
 .plan-features li{
-  padding:10px 0;color:#d4d4d8;font-size:14px;
+  padding:10px 0;color:#e2e2e2;font-size:14px;
   display:flex;align-items:flex-start;gap:10px;
   border-bottom:1px solid rgba(255,255,255,0.04);
 }
@@ -237,7 +242,7 @@ nav{
 .premium .plan-btn{background:linear-gradient(135deg,#c084fc,#f97316);color:#fff}
 .premium .plan-btn:hover{background:transparent;color:#c084fc;border:2px solid #c084fc}
 
-/* Detail Box */
+/* Detail */
 .detail-section{padding:60px 0}
 .detail-box{
   background:rgba(18,18,21,0.6);
@@ -255,17 +260,17 @@ nav{
   font-size:24px;font-weight:900;margin:0 0 8px;
   color:#fff;
 }
-.detail-box .sub{color:#71717a;font-size:13px;margin:0 0 24px;letter-spacing:1px}
+.detail-box .sub{color:#38bdf8;font-size:13px;margin:0 0 24px;letter-spacing:1px;font-weight:700}
 .detail-box h4{
   color:#38bdf8;font-size:16px;font-weight:800;
   margin:24px 0 12px;display:flex;align-items:center;gap:8px;
 }
-.detail-box p{color:#d4d4d8;font-size:14px;line-height:1.9;margin:0 0 12px}
-.detail-box ul{color:#d4d4d8;font-size:14px;line-height:2;padding-left:20px;margin:0 0 16px}
+.detail-box p{color:#e2e2e2;font-size:14px;line-height:1.9;margin:0 0 12px}
+.detail-box ul{color:#e2e2e2;font-size:14px;line-height:2;padding-left:20px;margin:0 0 16px}
 .detail-box ul li::marker{color:#38bdf8}
-.mm-text{color:#a1a1aa;font-size:14px;line-height:2;margin:12px 0}
+.mm-text{color:#d4d4d8;font-size:14px;line-height:2;margin:12px 0}
 
-/* Comparison Table */
+/* Compare */
 .compare-section{padding:60px 0 90px}
 .compare-table{
   width:100%;
@@ -291,7 +296,7 @@ nav{
 .compare-table td{
   padding:16px;
   font-size:14px;
-  color:#d4d4d8;
+  color:#e2e2e2;
   border-bottom:1px solid rgba(255,255,255,0.04);
 }
 .compare-table tr:last-child td{border-bottom:0}
@@ -307,11 +312,10 @@ nav{
 .cta-section h2{
   font-size:clamp(32px,5vw,56px);
   font-weight:900;margin:0 0 16px;
-  background:linear-gradient(135deg,#fff,#38bdf8);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#fff;
+  text-shadow:0 0 40px rgba(56,189,248,0.4);
 }
-.cta-section p{color:#a1a1aa;font-size:16px;margin:0 0 32px}
+.cta-section p{color:#d4d4d8;font-size:16px;margin:0 0 32px}
 .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .cta-btn{
   padding:14px 32px;border-radius:14px;
@@ -330,7 +334,7 @@ nav{
 }
 .cta-btn.secondary:hover{border-color:#38bdf8;color:#38bdf8}
 
-footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:space-between;border-top:1px solid #1f1f23}
+footer{padding:30px 0;color:#a1a1aa;font-size:13px;display:flex;justify-content:space-between;border-top:1px solid #1f1f23}
 
 .reveal{opacity:0;transform:translateY(50px);transition:opacity .9s ease,transform .9s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -340,7 +344,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
 
 <div class="aurora"></div>
 
-<!-- Navbar -->
 <nav>
   <div class="wrap nav">
     <div class="brand-box">
@@ -358,7 +361,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </nav>
 
-<!-- Page Head -->
 <header class="page-head">
   <div class="wrap">
     <span class="tag">MMBS — SERVICES & PLANS</span>
@@ -367,7 +369,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </header>
 
-<!-- Overview -->
 <section class="overview-section reveal">
   <div class="wrap">
     <span class="section-tag">01 / OVERVIEW</span>
@@ -381,6 +382,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
           <li>Premium Packages</li>
           <li>Gold Packages</li>
         </ul>
+        <a href="#plans" class="overview-link">LEARN MORE →</a>
       </div>
       <div class="overview-card">
         <span class="overview-icon">💎</span>
@@ -391,6 +393,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
           <li>Website</li>
           <li>Professional Video & Graphics</li>
         </ul>
+        <a href="#plans" class="overview-link">LEARN MORE →</a>
       </div>
       <div class="overview-card">
         <span class="overview-icon">🚀</span>
@@ -401,19 +404,18 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
           <li>Video Editing</li>
           <li>Videographer & Photographer</li>
         </ul>
+        <a href="#plans" class="overview-link">LEARN MORE →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Plans -->
-<section class="plans-section reveal">
+<section class="plans-section reveal" id="plans">
   <div class="wrap">
     <span class="section-tag">02 / OUR PLANS</span>
     <h2 class="section-title">Choose Your Plan</h2>
     <div class="plans-grid">
 
-      <!-- Standard -->
       <div class="plan-card standard">
         <div class="plan-header">
           <h3 class="plan-name">Standard Plan</h3>
@@ -434,7 +436,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
         <a href="#contact" class="plan-btn">MORE INFO</a>
       </div>
 
-      <!-- Gold -->
       <div class="plan-card gold">
         <div class="plan-header">
           <h3 class="plan-name">Gold Plan</h3>
@@ -456,7 +457,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
         <a href="#contact" class="plan-btn">MORE INFO</a>
       </div>
 
-      <!-- Premium -->
       <div class="plan-card premium">
         <div class="plan-header">
           <h3 class="plan-name">Premium Plan</h3>
@@ -483,7 +483,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Standard Detail -->
 <section class="detail-section reveal">
   <div class="wrap">
     <span class="section-tag">03 / PACKAGE DETAILS</span>
@@ -523,7 +522,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Gold Detail -->
 <section class="detail-section reveal">
   <div class="wrap">
     <h2 class="section-title">Gold Plan — 1 Month</h2>
@@ -556,7 +554,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Premium Detail -->
 <section class="detail-section reveal">
   <div class="wrap">
     <h2 class="section-title">Premium Plan — 3 Months</h2>
@@ -606,12 +603,11 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Comparison Table -->
 <section class="compare-section reveal">
   <div class="wrap">
     <span class="section-tag">04 / COMPARISON</span>
     <h2 class="section-title">Let's get digital. MMBS</h2>
-    <p style="color:#a1a1aa;margin-bottom:32px;text-align:right;font-size:13px;letter-spacing:2px;">HELPING LOCAL BUSINESS OVER 50+</p>
+    <p style="color:#38bdf8;margin-bottom:32px;text-align:right;font-size:13px;letter-spacing:2px;font-weight:700;">HELPING LOCAL BUSINESS OVER 50+</p>
     <table class="compare-table">
       <thead>
         <tr>
@@ -636,7 +632,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-section reveal" id="contact">
   <div class="wrap">
     <h2>Ready to Get Started?</h2>
