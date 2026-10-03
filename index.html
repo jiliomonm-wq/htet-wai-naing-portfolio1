@@ -74,13 +74,87 @@ nav{
 
 /* Hero Section */
 .hero{
+  position:relative;
   min-height:90vh;
   display:flex;
   align-items:center;
   padding:80px 0 60px;
   border-bottom:1px solid #1f1f23;
+  overflow:hidden;
 }
+
+/* Animated Gradient Divider (Hero အထက်) */
+.hero::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+  max-width:1200px;
+  height:2px;
+  background:linear-gradient(90deg, transparent, #38bdf8, #c084fc, #f97316, transparent);
+  background-size:200% 100%;
+  animation:dividerFlow 4s linear infinite;
+  z-index:1;
+}
+
+/* Animated Gradient Divider (Hero အောက်) */
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:80%;
+  max-width:1200px;
+  height:2px;
+  background:linear-gradient(90deg, transparent, #f97316, #c084fc, #38bdf8, transparent);
+  background-size:200% 100%;
+  animation:dividerFlow 4s linear infinite reverse;
+  z-index:1;
+}
+@keyframes dividerFlow{
+  0%{background-position:0% 50%;}
+  100%{background-position:200% 50%;}
+}
+
+/* Floating Dots Background */
+.floating-dots{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+.floating-dots span{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:#38bdf8;
+  border-radius:50%;
+  opacity:0.4;
+  animation:floatDot 12s linear infinite;
+}
+.floating-dots span:nth-child(1){left:5%;top:10%;animation-delay:0s;}
+.floating-dots span:nth-child(2){left:15%;top:30%;animation-delay:1s;background:#c084fc;}
+.floating-dots span:nth-child(3){left:25%;top:70%;animation-delay:2s;background:#f97316;}
+.floating-dots span:nth-child(4){left:40%;top:20%;animation-delay:3s;}
+.floating-dots span:nth-child(5){left:55%;top:80%;animation-delay:4s;background:#c084fc;}
+.floating-dots span:nth-child(6){left:65%;top:40%;animation-delay:5s;}
+.floating-dots span:nth-child(7){left:75%;top:60%;animation-delay:6s;background:#f97316;}
+.floating-dots span:nth-child(8){left:85%;top:15%;animation-delay:7s;}
+.floating-dots span:nth-child(9){left:92%;top:75%;animation-delay:8s;background:#c084fc;}
+.floating-dots span:nth-child(10){left:48%;top:50%;animation-delay:9s;}
+@keyframes floatDot{
+  0%{transform:translateY(0) scale(1);opacity:0.2;}
+  50%{transform:translateY(-40px) scale(1.5);opacity:0.6;}
+  100%{transform:translateY(0) scale(1);opacity:0.2;}
+}
+
 .hero-card{
+  position:relative;
+  z-index:2;
   background:#121215;
   border:1px solid #26262b;
   border-radius:28px;
@@ -274,6 +348,12 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
 
 <!-- Hero Section -->
 <header class="hero" id="about">
+  <!-- Floating Dots -->
+  <div class="floating-dots">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
   <div class="wrap">
     <div class="hero-card">
       <div class="profile-img-wrap">
