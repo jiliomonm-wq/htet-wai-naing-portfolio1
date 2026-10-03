@@ -8,22 +8,14 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  background:#09090b;
-  color:#f5f5f5;
+  margin:0;background:#09090b;color:#f5f5f5;
   font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  line-height:1.6;
-  position:relative;
-  overflow-x:hidden;
-  min-width:1200px;
+  line-height:1.6;position:relative;overflow-x:hidden;min-width:1200px;
 }
 
-/* ====== Aurora Background ====== */
+/* Aurora Background */
 .aurora{
-  position:fixed;
-  inset:-30%;
-  z-index:-2;
-  pointer-events:none;
+  position:fixed;inset:-30%;z-index:-2;pointer-events:none;
   background:
     radial-gradient(circle at 20% 30%, rgba(56,189,248,0.22), transparent 40%),
     radial-gradient(circle at 80% 70%, rgba(192,132,252,0.18), transparent 40%),
@@ -37,23 +29,12 @@ body{
   66%{transform:translate(-30px,30px) scale(1.05);}
 }
 
-/* ====== MMBS Watermark ====== */
 body::before{
   content:"MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS ";
-  position:fixed;
-  top:-50%;
-  left:-50%;
-  width:200%;
-  height:200%;
-  z-index:-1;
-  font-size:75px;
-  font-weight:900;
-  color:rgba(255,255,255,0.03);
-  display:flex;
-  flex-wrap:wrap;
-  gap:100px 140px;
-  transform:rotate(-18deg);
-  pointer-events:none;
+  position:fixed;top:-50%;left:-50%;width:200%;height:200%;z-index:-1;
+  font-size:75px;font-weight:900;color:rgba(255,255,255,0.03);
+  display:flex;flex-wrap:wrap;gap:100px 140px;
+  transform:rotate(-18deg);pointer-events:none;
   animation:watermarkFloat 35s linear infinite;
 }
 @keyframes watermarkFloat{
@@ -65,11 +46,9 @@ body::before{
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:auto;padding:0 24px}
 
-/* ====== Sticky Navbar ====== */
+/* Navbar */
 nav{
-  position:sticky;
-  top:0;
-  z-index:100;
+  position:sticky;top:0;z-index:100;
   background:rgba(9,9,11,0.7);
   backdrop-filter:blur(16px) saturate(180%);
   -webkit-backdrop-filter:blur(16px) saturate(180%);
@@ -77,7 +56,8 @@ nav{
 }
 .nav{height:70px;display:flex;align-items:center;justify-content:space-between}
 .brand-box{display:flex;align-items:center;gap:10px}
-.brand{font-weight:800;letter-spacing:.08em;font-size:18px;
+.brand{
+  font-weight:800;letter-spacing:.08em;font-size:18px;
   background:linear-gradient(135deg,#fff,#38bdf8);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -95,28 +75,48 @@ nav{
 .links{display:flex;gap:20px;font-size:14px;color:#aaa;align-items:center}
 .links a{position:relative;transition:color .3s}
 .links a:hover{color:#38bdf8}
-.links a::after{
+.links a:not(.service-btn-nav)::after{
   content:'';position:absolute;bottom:-4px;left:0;
   width:0;height:2px;background:#38bdf8;transition:width .3s;
 }
-.links a:hover::after{width:100%}
+.links a:not(.service-btn-nav):hover::after{width:100%}
 
-/* ====== Hero Section ====== */
-.hero{
-  min-height:90vh;
-  display:flex;
-  align-items:center;
-  padding:80px 0 60px;
+/* Services Button (Gradient Glow) */
+.service-btn-nav{
   position:relative;
+  padding:8px 18px;
+  border-radius:20px;
+  font-weight:700;
+  color:#fff !important;
+  background:linear-gradient(135deg,#38bdf8,#c084fc,#f97316);
+  background-size:200% 200%;
+  animation:btnFlow 4s linear infinite;
+  box-shadow:0 0 20px rgba(56,189,248,0.4);
+  transition:transform .3s, box-shadow .3s;
+  overflow:hidden;
+}
+.service-btn-nav:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 0 35px rgba(192,132,252,0.6);
+}
+.service-btn-nav::before{
+  content:'';
+  position:absolute;top:0;left:-100%;
+  width:100%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+  transition:left .6s;
+}
+.service-btn-nav:hover::before{left:100%}
+@keyframes btnFlow{
+  0%{background-position:0% 50%;}
+  100%{background-position:200% 50%;}
 }
 
+/* Hero */
+.hero{min-height:90vh;display:flex;align-items:center;padding:80px 0 60px;position:relative}
 .hero-card{
-  position:relative;
-  border-radius:28px;
-  padding:45px;
-  display:grid;
-  grid-template-columns:320px 1fr;
-  gap:45px;
+  position:relative;border-radius:28px;padding:45px;
+  display:grid;grid-template-columns:320px 1fr;gap:45px;
   background:rgba(18,18,21,0.55);
   backdrop-filter:blur(20px) saturate(180%);
   -webkit-backdrop-filter:blur(20px) saturate(180%);
@@ -126,57 +126,37 @@ nav{
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 0 100px rgba(56,189,248,0.12);
 }
-
-/* Gradient Border */
 .hero-card::before{
-  content:'';
-  position:absolute;
-  inset:-1px;
-  border-radius:28px;
-  padding:1px;
+  content:'';position:absolute;inset:-1px;border-radius:28px;padding:1px;
   background:linear-gradient(135deg,#38bdf8,#c084fc,#f97316,#38bdf8);
   background-size:300% 300%;
   animation:borderFlow 8s linear infinite;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
   pointer-events:none;
 }
 @keyframes borderFlow{
   0%{background-position:0% 50%;}
   100%{background-position:300% 50%;}
 }
-
 .profile-img-wrap{
-  position:relative;
-  width:100%;
-  aspect-ratio:1/1.2;
-  border-radius:22px;
-  overflow:hidden;
+  position:relative;width:100%;aspect-ratio:1/1.2;
+  border-radius:22px;overflow:hidden;
   border:2px solid rgba(56,189,248,0.3);
   background:#1a1a1f;
   box-shadow:0 0 40px rgba(56,189,248,0.2);
 }
-.profile-img-wrap img{
-  width:100%;height:100%;object-fit:cover;display:block;
-}
+.profile-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
 .profile-tag{
   position:absolute;bottom:12px;left:12px;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(6px);
-  padding:4px 12px;border-radius:20px;
-  font-size:11px;color:#bbb;
+  background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);
+  padding:4px 12px;border-radius:20px;font-size:11px;color:#bbb;
   border:1px solid rgba(255,255,255,0.1);
 }
 .hero-content{display:flex;flex-direction:column;justify-content:center}
 .sub-name{font-size:15px;color:#888;text-transform:uppercase;letter-spacing:2px;margin:0 0 4px}
-
-/* Text Gradient */
 .hero-title{
-  font-size:clamp(36px,5vw,56px);
-  font-weight:900;line-height:1;margin:0 0 10px;
+  font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1;margin:0 0 10px;
   background:linear-gradient(135deg,#fff 0%,#38bdf8 50%,#c084fc 100%);
   background-size:200% 200%;
   -webkit-background-clip:text;background-clip:text;
@@ -187,47 +167,27 @@ nav{
   0%,100%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
 }
-
 .role-badge{display:inline-block;color:#38bdf8;font-size:15px;font-weight:600;margin-bottom:18px}
 .bio-text{color:#b3b3b3;font-size:15px;line-height:1.7;margin:0 0 22px}
 
-/* ====== Client Box ====== */
 .client-box{
-  background:rgba(23,23,28,0.7);
-  border:1px solid rgba(255,255,255,0.06);
-  padding:16px 20px;border-radius:14px;margin-bottom:24px;
-  backdrop-filter:blur(10px);
+  background:rgba(23,23,28,0.7);border:1px solid rgba(255,255,255,0.06);
+  padding:16px 20px;border-radius:14px;margin-bottom:24px;backdrop-filter:blur(10px);
 }
 .client-box b{display:block;font-size:12px;color:#888;letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
 .client-tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag-item{
   background:#23232a;font-size:12px;padding:4px 12px;
-  border-radius:8px;color:#e2e2e2;border:1px solid #33333d;
-  transition:.3s;
+  border-radius:8px;color:#e2e2e2;border:1px solid #33333d;transition:.3s;
 }
-.tag-item:hover{
-  border-color:#38bdf8;
-  color:#38bdf8;
-  transform:translateY(-2px);
-}
+.tag-item:hover{border-color:#38bdf8;color:#38bdf8;transform:translateY(-2px)}
 
-/* ====== Software Badges ====== */
-.software-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-  gap:12px;margin-top:10px;
-}
+.software-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:10px}
 .soft-card{
-  background:rgba(23,23,29,0.7);
-  border:1px solid #26262e;
-  padding:10px 14px;border-radius:10px;
-  transition:.3s;
+  background:rgba(23,23,29,0.7);border:1px solid #26262e;
+  padding:10px 14px;border-radius:10px;transition:.3s;
 }
-.soft-card:hover{
-  border-color:#38bdf8;
-  box-shadow:0 0 20px rgba(56,189,248,0.2);
-  transform:translateY(-2px);
-}
+.soft-card:hover{border-color:#38bdf8;box-shadow:0 0 20px rgba(56,189,248,0.2);transform:translateY(-2px)}
 .soft-info{display:flex;justify-content:space-between;font-size:12px;font-weight:bold;margin-bottom:6px}
 .soft-meter{display:flex;gap:4px}
 .soft-meter span{height:4px;flex:1;background:#2a2a35;border-radius:2px}
@@ -236,33 +196,25 @@ nav{
 .soft-meter.ae span.active{background:#818cf8;box-shadow:0 0 6px #818cf8}
 .soft-meter.pr span.active{background:#c084fc;box-shadow:0 0 6px #c084fc}
 
-/* ====== Sections ====== */
 section{padding:90px 0;border-bottom:1px solid #1f1f23}
 .head{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px}
-.head h2{font-size:clamp(32px,5vw,56px);line-height:.95;margin:0;letter-spacing:-.03em;
+.head h2{
+  font-size:clamp(32px,5vw,56px);line-height:.95;margin:0;letter-spacing:-.03em;
   background:linear-gradient(135deg,#fff,#71717a);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 .head span{font-size:12px;color:#71717a;letter-spacing:.15em}
 
-/* ====== Videos ====== */
 .videos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .video{
-  background:#131317;
-  border:1px solid #24242c;
-  border-radius:18px;overflow:hidden;
+  background:#131317;border:1px solid #24242c;border-radius:18px;overflow:hidden;
   transition:transform .3s,border-color .3s,box-shadow .3s;
 }
-.video:hover{
-  transform:translateY(-6px);
-  border-color:#38bdf8;
-  box-shadow:0 0 30px rgba(56,189,248,0.25);
-}
+.video:hover{transform:translateY(-6px);border-color:#38bdf8;box-shadow:0 0 30px rgba(56,189,248,0.25)}
 .video iframe{width:100%;aspect-ratio:16/9;border:0;display:block;background:#000}
 .cap{padding:14px 16px;color:#a1a1aa;font-size:13px;font-weight:500}
 
-/* ====== Designs ====== */
 .designs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .design{
   position:relative;border:1px solid #26262f;border-radius:16px;
@@ -278,42 +230,31 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
   background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
   transform:rotate(30deg);pointer-events:none;transition:left .7s ease;
 }
-.design:hover{
-  transform:translateY(-6px) scale(1.02);
-  border-color:#60a5fa;
-  box-shadow:0 0 30px rgba(96,165,250,0.4);
-}
+.design:hover{transform:translateY(-6px) scale(1.02);border-color:#60a5fa;box-shadow:0 0 30px rgba(96,165,250,0.4)}
 .design:hover img{filter:brightness(1.15) contrast(1.05)}
 .design:hover::after{left:180%}
 
-/* ====== Skills ====== */
 .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .skill{
-  background:rgba(19,19,23,0.7);
-  border:1px solid #22222a;border-radius:16px;
+  background:rgba(19,19,23,0.7);border:1px solid #22222a;border-radius:16px;
   padding:22px;min-height:140px;
-  display:flex;flex-direction:column;justify-content:space-between;
-  transition:.3s;
+  display:flex;flex-direction:column;justify-content:space-between;transition:.3s;
 }
-.skill:hover{
-  border-color:#38bdf8;
-  box-shadow:0 0 25px rgba(56,189,248,0.2);
-  transform:translateY(-4px);
-}
+.skill:hover{border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,0.2);transform:translateY(-4px)}
 .skill small{color:#64748b;font-weight:bold}
 .skill h3{margin:0;font-size:18px}
 
-/* ====== Contact ====== */
 .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}
 .detail{padding:16px 0;border-bottom:1px solid #22222a}
 .detail small{display:block;color:#71717a;font-size:11px;letter-spacing:.12em;margin-bottom:4px}
 .detail strong{font-size:16px}
 .detail strong a:hover{color:#38bdf8}
 
-/* ====== Modal ====== */
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);
+.modal{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);
   z-index:200;align-items:center;justify-content:center;padding:20px;
-  backdrop-filter:blur(10px);}
+  backdrop-filter:blur(10px);
+}
 .modal.open{display:flex}
 .modal img{max-width:92%;max-height:88%;border-radius:12px;border:1px solid #444}
 .close{position:fixed;right:25px;top:20px;font-size:40px;cursor:pointer;color:#bbb;transition:.3s}
@@ -321,25 +262,23 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
 
 footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:space-between}
 
-/* ====== Scroll Reveal ====== */
 .reveal{opacity:0;transform:translateY(50px);transition:opacity .9s ease,transform .9s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-<!-- Aurora Background -->
 <div class="aurora"></div>
 
-<!-- Navbar -->
 <nav>
   <div class="wrap nav">
     <div class="brand-box">
-      <a class="brand" href="#">MMBS-MYANMAR</a>
+      <a class="brand" href="index.html">MMBS-MYANMAR</a>
       <span class="cat-anim">🐱✨</span>
     </div>
     <div class="links">
       <a href="#about">Profile</a>
+      <a href="services.html" class="service-btn-nav">✨ Services & Plans</a>
       <a href="#videos">Videos</a>
       <a href="#design">Graphic Design</a>
       <a href="#skills">Skills</a>
@@ -348,7 +287,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </nav>
 
-<!-- Hero Section -->
 <header class="hero" id="about">
   <div class="wrap">
     <div class="hero-card">
@@ -356,16 +294,13 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
         <img src="profile.png" alt="Htet Wai Naing Profile">
         <div class="profile-tag">Age 24 • Graduating in 2027</div>
       </div>
-
       <div class="hero-content">
         <div class="sub-name">MMBS-MYANMAR</div>
         <h1 class="hero-title">Htet Wai Naing</h1>
         <div class="role-badge">Digital Solutions & Creative Media Director</div>
-        
         <p class="bio-text">
           Digital Solutions & Media Specialist since 2019, serving 30+ businesses with expertise in Digital Marketing, Video Production, Editing, Animation, Motion Graphics, AI Commercials, Branding, Website & POS, Media Buying, and IT Solutions.
         </p>
-
         <div class="client-box">
           <b>Key Brand Collaborations & Clients</b>
           <div class="client-tags">
@@ -377,7 +312,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
             <span class="tag-item">+ 30 More Local Businesses in Mandalay</span>
           </div>
         </div>
-
         <div class="software-grid">
           <div class="soft-card">
             <div class="soft-info"><span>Photoshop</span><span>95%</span></div>
@@ -401,31 +335,23 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </header>
 
-<!-- Videos -->
 <section id="videos" class="reveal">
   <div class="wrap">
-    <div class="head">
-      <h2>VIDEO<br>SHOWCASE</h2>
-      <span>02 / MEDIA PRODUCTION</span>
-    </div>
+    <div class="head"><h2>VIDEO<br>SHOWCASE</h2><span>02 / MEDIA PRODUCTION</span></div>
     <div class="videos">
-      <div class="video"><iframe src="https://www.youtube.com/embed/TH83YeKcBDg" title="Project 01" allowfullscreen></iframe><div class="cap">Commercial Showcase — MMBS Project 01</div></div>
-      <div class="video"><iframe src="https://www.youtube.com/embed/B1qxBdy_RSU" title="Project 02" allowfullscreen></iframe><div class="cap">Creative Production — MMBS Project 02</div></div>
-      <div class="video"><iframe src="https://www.youtube.com/embed/6GRK1bydtFw" title="Project 03" allowfullscreen></iframe><div class="cap">Media Campaign — MMBS Project 03</div></div>
-      <div class="video"><iframe src="https://www.youtube.com/embed/OskU145ncsE" title="Project 04" allowfullscreen></iframe><div class="cap">Social Media Ad — MMBS Project 04</div></div>
-      <div class="video"><iframe src="https://www.youtube.com/embed/jq-h9OQ3dy0" title="Project 05" allowfullscreen></iframe><div class="cap">Brand Visuals — MMBS Project 05</div></div>
-      <div class="video"><iframe src="https://www.youtube.com/embed/LVt8VhpevIg" title="Project 06" allowfullscreen></iframe><div class="cap">Cinematic Edit — MMBS Project 06</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/TH83YeKcBDg" allowfullscreen></iframe><div class="cap">Commercial Showcase — MMBS Project 01</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/B1qxBdy_RSU" allowfullscreen></iframe><div class="cap">Creative Production — MMBS Project 02</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/6GRK1bydtFw" allowfullscreen></iframe><div class="cap">Media Campaign — MMBS Project 03</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/OskU145ncsE" allowfullscreen></iframe><div class="cap">Social Media Ad — MMBS Project 04</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/jq-h9OQ3dy0" allowfullscreen></iframe><div class="cap">Brand Visuals — MMBS Project 05</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/LVt8VhpevIg" allowfullscreen></iframe><div class="cap">Cinematic Edit — MMBS Project 06</div></div>
     </div>
   </div>
 </section>
 
-<!-- Design -->
 <section id="design" class="reveal">
   <div class="wrap">
-    <div class="head">
-      <h2>GRAPHIC<br>DESIGN</h2>
-      <span>03 / VISUAL WORKS</span>
-    </div>
+    <div class="head"><h2>GRAPHIC<br>DESIGN</h2><span>03 / VISUAL WORKS</span></div>
     <div class="designs">
       <div class="design"><img src="design-1.webp" alt="Work 1"></div>
       <div class="design"><img src="design-2.webp" alt="Work 2"></div>
@@ -439,13 +365,9 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Skills -->
 <section id="skills" class="reveal">
   <div class="wrap">
-    <div class="head">
-      <h2>CORE<br>SKILLS</h2>
-      <span>04 / CAPABILITIES</span>
-    </div>
+    <div class="head"><h2>CORE<br>SKILLS</h2><span>04 / CAPABILITIES</span></div>
     <div class="skills">
       <div class="skill"><small>01</small><h3>Video Shooting & Editing</h3></div>
       <div class="skill"><small>02</small><h3>Graphic & Brand Design</h3></div>
@@ -459,19 +381,13 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Contact -->
 <section id="contact" class="reveal">
   <div class="wrap">
-    <div class="head">
-      <h2>LET'S<br>WORK.</h2>
-      <span>05 / CONTACT</span>
-    </div>
+    <div class="head"><h2>LET'S<br>WORK.</h2><span>05 / CONTACT</span></div>
     <div class="contact">
-      <div>
-        <p style="color:#aaa;font-size:18px;">
-          Website၊ POS စနစ်များမှစ၍ ဖန်တီးမှုအပြည့်ပါဝင်သော Media Production နှင့် Digital Ads Campaign များအထိ စီးပွားရေးလုပ်ငန်းတိုးတက်စေရန် အတူလက်တွဲလုပ်ဆောင်ကြပါစို့။
-        </p>
-      </div>
+      <div><p style="color:#aaa;font-size:18px;">
+        Website၊ POS စနစ်များမှစ၍ ဖန်တီးမှုအပြည့်ပါဝင်သော Media Production နှင့် Digital Ads Campaign များအထိ စီးပွားရေးလုပ်ငန်းတိုးတက်စေရန် အတူလက်တွဲလုပ်ဆောင်ကြပါစို့။
+      </p></div>
       <div>
         <div class="detail"><small>AGENCY</small><strong>MMBS-MYANMAR</strong></div>
         <div class="detail"><small>NAME</small><strong>Htet Wai Naing (Age 24)</strong></div>
@@ -489,13 +405,9 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   <span>Htet Wai Naing — Portfolio</span>
 </footer>
 
-<div class="modal" id="modal">
-  <div class="close">×</div>
-  <img id="modalImg" alt="Enlarged view">
-</div>
+<div class="modal" id="modal"><div class="close">×</div><img id="modalImg" alt="Enlarged view"></div>
 
 <script>
-// Modal
 const m = document.getElementById('modal');
 const mi = document.getElementById('modalImg');
 document.querySelectorAll('.design img').forEach(img => {
@@ -503,12 +415,8 @@ document.querySelectorAll('.design img').forEach(img => {
 });
 document.querySelector('.close').onclick = () => m.classList.remove('open');
 m.onclick = (e) => { if(e.target === m) m.classList.remove('open'); };
-
-// Scroll Reveal
 const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if(e.isIntersecting) e.target.classList.add('visible');
-  });
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, {threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
