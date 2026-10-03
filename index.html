@@ -18,7 +18,26 @@ body{
   min-width:1200px;
 }
 
-/* Background MMBS Watermark */
+/* ====== Aurora Background ====== */
+.aurora{
+  position:fixed;
+  inset:-30%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(56,189,248,0.22), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(192,132,252,0.18), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(249,115,22,0.12), transparent 50%);
+  filter:blur(90px);
+  animation:auroraMove 20s ease-in-out infinite;
+}
+@keyframes auroraMove{
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(40px,-30px) scale(1.1);}
+  66%{transform:translate(-30px,30px) scale(1.05);}
+}
+
+/* ====== MMBS Watermark ====== */
 body::before{
   content:"MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS ";
   position:fixed;
@@ -29,7 +48,7 @@ body::before{
   z-index:-1;
   font-size:75px;
   font-weight:900;
-  color:rgba(255,255,255,0.035);
+  color:rgba(255,255,255,0.03);
   display:flex;
   flex-wrap:wrap;
   gap:100px 140px;
@@ -46,288 +65,271 @@ body::before{
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:auto;padding:0 24px}
 
-/* Sticky Navbar */
+/* ====== Sticky Navbar ====== */
 nav{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(9,9,11,0.85);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid #222;
+  background:rgba(9,9,11,0.7);
+  backdrop-filter:blur(16px) saturate(180%);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,0.06);
 }
 .nav{height:70px;display:flex;align-items:center;justify-content:space-between}
 .brand-box{display:flex;align-items:center;gap:10px}
-.brand{font-weight:800;letter-spacing:.08em;font-size:18px}
+.brand{font-weight:800;letter-spacing:.08em;font-size:18px;
+  background:linear-gradient(135deg,#fff,#38bdf8);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 .cat-anim{
-  display:inline-block;
-  font-size:22px;
+  display:inline-block;font-size:22px;
   animation:catBounce 2s ease-in-out infinite;
   transform-origin:bottom center;
 }
 @keyframes catBounce{
-  0%, 100%{transform:translateY(0) rotate(0deg);}
+  0%,100%{transform:translateY(0) rotate(0deg);}
   30%{transform:translateY(-6px) rotate(-8deg);}
   60%{transform:translateY(-2px) rotate(8deg);}
 }
 .links{display:flex;gap:20px;font-size:14px;color:#aaa;align-items:center}
-.links a:hover{color:#fff}
+.links a{position:relative;transition:color .3s}
+.links a:hover{color:#38bdf8}
+.links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:2px;background:#38bdf8;transition:width .3s;
+}
+.links a:hover::after{width:100%}
 
-/* Hero Section */
+/* ====== Hero Section ====== */
 .hero{
-  position:relative;
   min-height:90vh;
   display:flex;
   align-items:center;
   padding:80px 0 60px;
-  border-bottom:1px solid #1f1f23;
-  overflow:hidden;
-}
-
-/* Animated Gradient Divider (Hero အထက်) */
-.hero::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:80%;
-  max-width:1200px;
-  height:2px;
-  background:linear-gradient(90deg, transparent, #38bdf8, #c084fc, #f97316, transparent);
-  background-size:200% 100%;
-  animation:dividerFlow 4s linear infinite;
-  z-index:1;
-}
-
-/* Animated Gradient Divider (Hero အောက်) */
-.hero::after{
-  content:'';
-  position:absolute;
-  bottom:0;
-  left:50%;
-  transform:translateX(-50%);
-  width:80%;
-  max-width:1200px;
-  height:2px;
-  background:linear-gradient(90deg, transparent, #f97316, #c084fc, #38bdf8, transparent);
-  background-size:200% 100%;
-  animation:dividerFlow 4s linear infinite reverse;
-  z-index:1;
-}
-@keyframes dividerFlow{
-  0%{background-position:0% 50%;}
-  100%{background-position:200% 50%;}
-}
-
-/* Floating Dots Background */
-.floating-dots{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  overflow:hidden;
-  z-index:0;
-}
-.floating-dots span{
-  position:absolute;
-  width:4px;
-  height:4px;
-  background:#38bdf8;
-  border-radius:50%;
-  opacity:0.4;
-  animation:floatDot 12s linear infinite;
-}
-.floating-dots span:nth-child(1){left:5%;top:10%;animation-delay:0s;}
-.floating-dots span:nth-child(2){left:15%;top:30%;animation-delay:1s;background:#c084fc;}
-.floating-dots span:nth-child(3){left:25%;top:70%;animation-delay:2s;background:#f97316;}
-.floating-dots span:nth-child(4){left:40%;top:20%;animation-delay:3s;}
-.floating-dots span:nth-child(5){left:55%;top:80%;animation-delay:4s;background:#c084fc;}
-.floating-dots span:nth-child(6){left:65%;top:40%;animation-delay:5s;}
-.floating-dots span:nth-child(7){left:75%;top:60%;animation-delay:6s;background:#f97316;}
-.floating-dots span:nth-child(8){left:85%;top:15%;animation-delay:7s;}
-.floating-dots span:nth-child(9){left:92%;top:75%;animation-delay:8s;background:#c084fc;}
-.floating-dots span:nth-child(10){left:48%;top:50%;animation-delay:9s;}
-@keyframes floatDot{
-  0%{transform:translateY(0) scale(1);opacity:0.2;}
-  50%{transform:translateY(-40px) scale(1.5);opacity:0.6;}
-  100%{transform:translateY(0) scale(1);opacity:0.2;}
+  position:relative;
 }
 
 .hero-card{
   position:relative;
-  z-index:2;
-  background:#121215;
-  border:1px solid #26262b;
   border-radius:28px;
   padding:45px;
   display:grid;
   grid-template-columns:320px 1fr;
   gap:45px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+  background:rgba(18,18,21,0.55);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 0 100px rgba(56,189,248,0.12);
 }
+
+/* Gradient Border */
+.hero-card::before{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:28px;
+  padding:1px;
+  background:linear-gradient(135deg,#38bdf8,#c084fc,#f97316,#38bdf8);
+  background-size:300% 300%;
+  animation:borderFlow 8s linear infinite;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+}
+@keyframes borderFlow{
+  0%{background-position:0% 50%;}
+  100%{background-position:300% 50%;}
+}
+
 .profile-img-wrap{
   position:relative;
   width:100%;
   aspect-ratio:1/1.2;
   border-radius:22px;
   overflow:hidden;
-  border:2px solid #2e2e38;
+  border:2px solid rgba(56,189,248,0.3);
   background:#1a1a1f;
+  box-shadow:0 0 40px rgba(56,189,248,0.2);
 }
 .profile-img-wrap img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
+  width:100%;height:100%;object-fit:cover;display:block;
 }
 .profile-tag{
-  position:absolute;
-  bottom:12px;
-  left:12px;
+  position:absolute;bottom:12px;left:12px;
   background:rgba(0,0,0,0.75);
   backdrop-filter:blur(6px);
-  padding:4px 12px;
-  border-radius:20px;
-  font-size:11px;
-  color:#bbb;
+  padding:4px 12px;border-radius:20px;
+  font-size:11px;color:#bbb;
   border:1px solid rgba(255,255,255,0.1);
 }
 .hero-content{display:flex;flex-direction:column;justify-content:center}
 .sub-name{font-size:15px;color:#888;text-transform:uppercase;letter-spacing:2px;margin:0 0 4px}
-.hero-title{font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1;margin:0 0 10px;color:#fff}
+
+/* Text Gradient */
+.hero-title{
+  font-size:clamp(36px,5vw,56px);
+  font-weight:900;line-height:1;margin:0 0 10px;
+  background:linear-gradient(135deg,#fff 0%,#38bdf8 50%,#c084fc 100%);
+  background-size:200% 200%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:textShine 5s ease-in-out infinite;
+}
+@keyframes textShine{
+  0%,100%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+}
+
 .role-badge{display:inline-block;color:#38bdf8;font-size:15px;font-weight:600;margin-bottom:18px}
 .bio-text{color:#b3b3b3;font-size:15px;line-height:1.7;margin:0 0 22px}
 
-/* Client & Project History Tags */
+/* ====== Client Box ====== */
 .client-box{
-  background:#17171c;
-  border:1px solid #26262d;
-  padding:16px 20px;
-  border-radius:14px;
-  margin-bottom:24px;
+  background:rgba(23,23,28,0.7);
+  border:1px solid rgba(255,255,255,0.06);
+  padding:16px 20px;border-radius:14px;margin-bottom:24px;
+  backdrop-filter:blur(10px);
 }
 .client-box b{display:block;font-size:12px;color:#888;letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
 .client-tags{display:flex;flex-wrap:wrap;gap:8px}
-.tag-item{background:#23232a;font-size:12px;padding:4px 12px;border-radius:8px;color:#e2e2e2;border:1px solid #33333d}
+.tag-item{
+  background:#23232a;font-size:12px;padding:4px 12px;
+  border-radius:8px;color:#e2e2e2;border:1px solid #33333d;
+  transition:.3s;
+}
+.tag-item:hover{
+  border-color:#38bdf8;
+  color:#38bdf8;
+  transform:translateY(-2px);
+}
 
-/* Tech Badges */
+/* ====== Software Badges ====== */
 .software-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
-  gap:12px;
-  margin-top:10px;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:12px;margin-top:10px;
 }
 .soft-card{
-  background:#17171d;
+  background:rgba(23,23,29,0.7);
   border:1px solid #26262e;
-  padding:10px 14px;
-  border-radius:10px;
+  padding:10px 14px;border-radius:10px;
+  transition:.3s;
+}
+.soft-card:hover{
+  border-color:#38bdf8;
+  box-shadow:0 0 20px rgba(56,189,248,0.2);
+  transform:translateY(-2px);
 }
 .soft-info{display:flex;justify-content:space-between;font-size:12px;font-weight:bold;margin-bottom:6px}
 .soft-meter{display:flex;gap:4px}
 .soft-meter span{height:4px;flex:1;background:#2a2a35;border-radius:2px}
-.soft-meter span.active{background:#38bdf8}
-.soft-meter.ai span.active{background:#f97316}
-.soft-meter.ae span.active{background:#818cf8}
-.soft-meter.pr span.active{background:#c084fc}
+.soft-meter span.active{background:#38bdf8;box-shadow:0 0 6px #38bdf8}
+.soft-meter.ai span.active{background:#f97316;box-shadow:0 0 6px #f97316}
+.soft-meter.ae span.active{background:#818cf8;box-shadow:0 0 6px #818cf8}
+.soft-meter.pr span.active{background:#c084fc;box-shadow:0 0 6px #c084fc}
 
-/* Sections General */
+/* ====== Sections ====== */
 section{padding:90px 0;border-bottom:1px solid #1f1f23}
 .head{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px}
-.head h2{font-size:clamp(32px,5vw,56px);line-height:.95;margin:0;letter-spacing:-.03em}
+.head h2{font-size:clamp(32px,5vw,56px);line-height:.95;margin:0;letter-spacing:-.03em;
+  background:linear-gradient(135deg,#fff,#71717a);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
 .head span{font-size:12px;color:#71717a;letter-spacing:.15em}
 
-/* 6 Videos Showcase */
-.videos{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
+/* ====== Videos ====== */
+.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .video{
   background:#131317;
   border:1px solid #24242c;
-  border-radius:18px;
-  overflow:hidden;
-  transition:transform .3s;
+  border-radius:18px;overflow:hidden;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
 }
-.video:hover{transform:translateY(-4px)}
-.video iframe{
-  width:100%;
-  aspect-ratio:16/9;
-  border:0;
-  display:block;
-  background:#000;
+.video:hover{
+  transform:translateY(-6px);
+  border-color:#38bdf8;
+  box-shadow:0 0 30px rgba(56,189,248,0.25);
 }
+.video iframe{width:100%;aspect-ratio:16/9;border:0;display:block;background:#000}
 .cap{padding:14px 16px;color:#a1a1aa;font-size:13px;font-weight:500}
 
-/* Graphic Design Highlight & Shimmer */
+/* ====== Designs ====== */
 .designs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .design{
-  position:relative;
-  border:1px solid #26262f;
-  border-radius:16px;
-  overflow:hidden;
-  cursor:pointer;
-  background:#121216;
-  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+  position:relative;border:1px solid #26262f;border-radius:16px;
+  overflow:hidden;cursor:pointer;background:#121216;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
 }
 .design img{
-  width:100%;
-  aspect-ratio:1;
-  object-fit:cover;
-  display:block;
-  transition:filter .4s ease, transform .4s ease;
-  filter:brightness(0.92);
+  width:100%;aspect-ratio:1;object-fit:cover;display:block;
+  transition:filter .4s,transform .4s;filter:brightness(0.92);
 }
 .design::after{
-  content:'';
-  position:absolute;
-  top:-60%;
-  left:-100%;
-  width:60%;
-  height:220%;
-  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-  transform:rotate(30deg);
-  pointer-events:none;
-  transition:left 0.7s ease;
+  content:'';position:absolute;top:-60%;left:-100%;width:60%;height:220%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent);
+  transform:rotate(30deg);pointer-events:none;transition:left .7s ease;
 }
 .design:hover{
   transform:translateY(-6px) scale(1.02);
   border-color:#60a5fa;
-  box-shadow:0 0 25px rgba(96,165,250,0.35);
+  box-shadow:0 0 30px rgba(96,165,250,0.4);
 }
 .design:hover img{filter:brightness(1.15) contrast(1.05)}
 .design:hover::after{left:180%}
 
-/* Core Skills */
+/* ====== Skills ====== */
 .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .skill{
-  background:#131317;
-  border:1px solid #22222a;
-  border-radius:16px;
-  padding:22px;
-  min-height:140px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
+  background:rgba(19,19,23,0.7);
+  border:1px solid #22222a;border-radius:16px;
+  padding:22px;min-height:140px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  transition:.3s;
+}
+.skill:hover{
+  border-color:#38bdf8;
+  box-shadow:0 0 25px rgba(56,189,248,0.2);
+  transform:translateY(-4px);
 }
 .skill small{color:#64748b;font-weight:bold}
 .skill h3{margin:0;font-size:18px}
 
-/* Contact */
+/* ====== Contact ====== */
 .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}
 .detail{padding:16px 0;border-bottom:1px solid #22222a}
 .detail small{display:block;color:#71717a;font-size:11px;letter-spacing:.12em;margin-bottom:4px}
 .detail strong{font-size:16px}
+.detail strong a:hover{color:#38bdf8}
 
-/* Modal Popup */
-.modal{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);
+/* ====== Modal ====== */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);
   z-index:200;align-items:center;justify-content:center;padding:20px;
-}
+  backdrop-filter:blur(10px);}
 .modal.open{display:flex}
 .modal img{max-width:92%;max-height:88%;border-radius:12px;border:1px solid #444}
-.close{position:fixed;right:25px;top:20px;font-size:40px;cursor:pointer;color:#bbb}
+.close{position:fixed;right:25px;top:20px;font-size:40px;cursor:pointer;color:#bbb;transition:.3s}
+.close:hover{color:#38bdf8;transform:rotate(90deg)}
 
 footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:space-between}
+
+/* ====== Scroll Reveal ====== */
+.reveal{opacity:0;transform:translateY(50px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
+
+<!-- Aurora Background -->
+<div class="aurora"></div>
 
 <!-- Navbar -->
 <nav>
@@ -348,12 +350,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
 
 <!-- Hero Section -->
 <header class="hero" id="about">
-  <!-- Floating Dots -->
-  <div class="floating-dots">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
-
   <div class="wrap">
     <div class="hero-card">
       <div class="profile-img-wrap">
@@ -370,7 +366,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
           Digital Solutions & Media Specialist since 2019, serving 30+ businesses with expertise in Digital Marketing, Video Production, Editing, Animation, Motion Graphics, AI Commercials, Branding, Website & POS, Media Buying, and IT Solutions.
         </p>
 
-        <!-- Collaborations -->
         <div class="client-box">
           <b>Key Brand Collaborations & Clients</b>
           <div class="client-tags">
@@ -383,7 +378,6 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
           </div>
         </div>
 
-        <!-- Software Skills Badges -->
         <div class="software-grid">
           <div class="soft-card">
             <div class="soft-info"><span>Photoshop</span><span>95%</span></div>
@@ -402,51 +396,31 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
             <div class="soft-meter ae"><span class="active"></span><span class="active"></span><span class="active"></span><span></span><span></span></div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
 </header>
 
-<!-- 6 Video Showcases -->
-<section id="videos">
+<!-- Videos -->
+<section id="videos" class="reveal">
   <div class="wrap">
     <div class="head">
       <h2>VIDEO<br>SHOWCASE</h2>
       <span>02 / MEDIA PRODUCTION</span>
     </div>
-    
     <div class="videos">
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/TH83YeKcBDg" title="Project 01" allowfullscreen></iframe>
-        <div class="cap">Commercial Showcase — MMBS Project 01</div>
-      </div>
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/B1qxBdy_RSU" title="Project 02" allowfullscreen></iframe>
-        <div class="cap">Creative Production — MMBS Project 02</div>
-      </div>
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/6GRK1bydtFw" title="Project 03" allowfullscreen></iframe>
-        <div class="cap">Media Campaign — MMBS Project 03</div>
-      </div>
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/OskU145ncsE" title="Project 04" allowfullscreen></iframe>
-        <div class="cap">Social Media Ad — MMBS Project 04</div>
-      </div>
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/jq-h9OQ3dy0" title="Project 05" allowfullscreen></iframe>
-        <div class="cap">Brand Visuals — MMBS Project 05</div>
-      </div>
-      <div class="video">
-        <iframe src="https://www.youtube.com/embed/LVt8VhpevIg" title="Project 06" allowfullscreen></iframe>
-        <div class="cap">Cinematic Edit — MMBS Project 06</div>
-      </div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/TH83YeKcBDg" title="Project 01" allowfullscreen></iframe><div class="cap">Commercial Showcase — MMBS Project 01</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/B1qxBdy_RSU" title="Project 02" allowfullscreen></iframe><div class="cap">Creative Production — MMBS Project 02</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/6GRK1bydtFw" title="Project 03" allowfullscreen></iframe><div class="cap">Media Campaign — MMBS Project 03</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/OskU145ncsE" title="Project 04" allowfullscreen></iframe><div class="cap">Social Media Ad — MMBS Project 04</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/jq-h9OQ3dy0" title="Project 05" allowfullscreen></iframe><div class="cap">Brand Visuals — MMBS Project 05</div></div>
+      <div class="video"><iframe src="https://www.youtube.com/embed/LVt8VhpevIg" title="Project 06" allowfullscreen></iframe><div class="cap">Cinematic Edit — MMBS Project 06</div></div>
     </div>
   </div>
 </section>
 
-<!-- Graphic Design -->
-<section id="design">
+<!-- Design -->
+<section id="design" class="reveal">
   <div class="wrap">
     <div class="head">
       <h2>GRAPHIC<br>DESIGN</h2>
@@ -465,8 +439,8 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Core Skills -->
-<section id="skills">
+<!-- Skills -->
+<section id="skills" class="reveal">
   <div class="wrap">
     <div class="head">
       <h2>CORE<br>SKILLS</h2>
@@ -486,7 +460,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
 </section>
 
 <!-- Contact -->
-<section id="contact">
+<section id="contact" class="reveal">
   <div class="wrap">
     <div class="head">
       <h2>LET'S<br>WORK.</h2>
@@ -521,16 +495,22 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
 </div>
 
 <script>
+// Modal
 const m = document.getElementById('modal');
 const mi = document.getElementById('modalImg');
 document.querySelectorAll('.design img').forEach(img => {
-  img.onclick = () => {
-    mi.src = img.src;
-    m.classList.add('open');
-  };
+  img.onclick = () => { mi.src = img.src; m.classList.add('open'); };
 });
 document.querySelector('.close').onclick = () => m.classList.remove('open');
 m.onclick = (e) => { if(e.target === m) m.classList.remove('open'); };
+
+// Scroll Reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+}, {threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
