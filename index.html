@@ -15,9 +15,9 @@ body{
 .aurora{
   position:fixed;inset:-30%;z-index:-2;pointer-events:none;
   background:
-    radial-gradient(circle at 20% 30%, rgba(56,189,248,0.22), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(192,132,252,0.18), transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(249,115,22,0.12), transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(56,189,248,0.25), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(192,132,252,0.2), transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(249,115,22,0.15), transparent 50%);
   filter:blur(90px);
   animation:auroraMove 20s ease-in-out infinite;
 }
@@ -53,9 +53,7 @@ nav{
 .brand-box{display:flex;align-items:center;gap:10px}
 .brand{
   font-weight:800;letter-spacing:.08em;font-size:18px;
-  background:linear-gradient(135deg,#fff,#38bdf8);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#38bdf8;
 }
 .cat-anim{
   display:inline-block;font-size:22px;
@@ -76,7 +74,6 @@ nav{
 }
 .links a:not(.service-btn-nav):hover::after{width:100%}
 
-/* Services Button (Gradient Glow) */
 .service-btn-nav{
   position:relative;padding:8px 18px;border-radius:20px;font-weight:700;
   color:#fff !important;
@@ -103,7 +100,11 @@ nav{
   100%{background-position:200% 50%;}
 }
 
-.hero{min-height:90vh;display:flex;align-items:center;padding:80px 0 60px;position:relative}
+.hero{
+  display:flex;align-items:center;
+  padding:60px 0 50px;
+  position:relative;
+}
 .hero-card{
   position:relative;border-radius:28px;padding:45px;
   display:grid;grid-template-columns:320px 1fr;gap:45px;
@@ -129,6 +130,7 @@ nav{
   0%{background-position:0% 50%;}
   100%{background-position:300% 50%;}
 }
+
 .profile-img-wrap{
   position:relative;width:100%;aspect-ratio:1/1.2;
   border-radius:22px;overflow:hidden;
@@ -137,34 +139,38 @@ nav{
   box-shadow:0 0 40px rgba(56,189,248,0.2);
 }
 .profile-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.profile-img-wrap::before{
+  content:'MMBS';
+  position:absolute;top:12px;left:12px;
+  background:linear-gradient(135deg,#38bdf8,#c084fc);
+  color:#fff;font-size:11px;font-weight:900;letter-spacing:2px;
+  padding:5px 12px;border-radius:20px;
+  z-index:2;
+  box-shadow:0 4px 15px rgba(56,189,248,0.4);
+}
 .profile-tag{
   position:absolute;bottom:12px;left:12px;
   background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);
-  padding:4px 12px;border-radius:20px;font-size:11px;color:#bbb;
+  padding:4px 12px;border-radius:20px;font-size:11px;color:#e2e2e2;
   border:1px solid rgba(255,255,255,0.1);
+  z-index:2;
 }
 .hero-content{display:flex;flex-direction:column;justify-content:center}
 .sub-name{font-size:15px;color:#888;text-transform:uppercase;letter-spacing:2px;margin:0 0 4px}
+
 .hero-title{
   font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1;margin:0 0 10px;
-  background:linear-gradient(135deg,#fff 0%,#38bdf8 50%,#c084fc 100%);
-  background-size:200% 200%;
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:textShine 5s ease-in-out infinite;
-}
-@keyframes textShine{
-  0%,100%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
+  color:#fff;
+  text-shadow:0 0 40px rgba(56,189,248,0.5);
 }
 .role-badge{display:inline-block;color:#38bdf8;font-size:15px;font-weight:600;margin-bottom:18px}
-.bio-text{color:#b3b3b3;font-size:15px;line-height:1.7;margin:0 0 22px}
+.bio-text{color:#d4d4d8;font-size:15px;line-height:1.7;margin:0 0 22px}
 
 .client-box{
   background:rgba(23,23,28,0.7);border:1px solid rgba(255,255,255,0.06);
   padding:16px 20px;border-radius:14px;margin-bottom:24px;backdrop-filter:blur(10px);
 }
-.client-box b{display:block;font-size:12px;color:#888;letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
+.client-box b{display:block;font-size:12px;color:#38bdf8;letter-spacing:1px;margin-bottom:8px;text-transform:uppercase;font-weight:700}
 .client-tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag-item{
   background:#23232a;font-size:12px;padding:4px 12px;
@@ -178,7 +184,7 @@ nav{
   padding:10px 14px;border-radius:10px;transition:.3s;
 }
 .soft-card:hover{border-color:#38bdf8;box-shadow:0 0 20px rgba(56,189,248,0.2);transform:translateY(-2px)}
-.soft-info{display:flex;justify-content:space-between;font-size:12px;font-weight:bold;margin-bottom:6px}
+.soft-info{display:flex;justify-content:space-between;font-size:12px;font-weight:bold;margin-bottom:6px;color:#fff}
 .soft-meter{display:flex;gap:4px}
 .soft-meter span{height:4px;flex:1;background:#2a2a35;border-radius:2px}
 .soft-meter span.active{background:#38bdf8;box-shadow:0 0 6px #38bdf8}
@@ -186,15 +192,14 @@ nav{
 .soft-meter.ae span.active{background:#818cf8;box-shadow:0 0 6px #818cf8}
 .soft-meter.pr span.active{background:#c084fc;box-shadow:0 0 6px #c084fc}
 
-section{padding:90px 0;border-bottom:1px solid #1f1f23}
+section{padding:80px 0;border-bottom:1px solid #1f1f23}
 .head{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px}
 .head h2{
   font-size:clamp(32px,5vw,56px);line-height:.95;margin:0;letter-spacing:-.03em;
-  background:linear-gradient(135deg,#fff,#71717a);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#ffffff;
+  text-shadow:0 0 30px rgba(255,255,255,0.15);
 }
-.head span{font-size:12px;color:#71717a;letter-spacing:.15em}
+.head span{font-size:12px;color:#38bdf8;letter-spacing:.15em;font-weight:700}
 
 .videos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .video{
@@ -203,7 +208,7 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
 }
 .video:hover{transform:translateY(-6px);border-color:#38bdf8;box-shadow:0 0 30px rgba(56,189,248,0.25)}
 .video iframe{width:100%;aspect-ratio:16/9;border:0;display:block;background:#000}
-.cap{padding:14px 16px;color:#a1a1aa;font-size:13px;font-weight:500}
+.cap{padding:14px 16px;color:#e2e2e2;font-size:13px;font-weight:500}
 
 .designs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .design{
@@ -231,13 +236,13 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
   display:flex;flex-direction:column;justify-content:space-between;transition:.3s;
 }
 .skill:hover{border-color:#38bdf8;box-shadow:0 0 25px rgba(56,189,248,0.2);transform:translateY(-4px)}
-.skill small{color:#64748b;font-weight:bold}
-.skill h3{margin:0;font-size:18px}
+.skill small{color:#38bdf8;font-weight:bold}
+.skill h3{margin:0;font-size:18px;color:#fff}
 
 .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}
 .detail{padding:16px 0;border-bottom:1px solid #22222a}
-.detail small{display:block;color:#71717a;font-size:11px;letter-spacing:.12em;margin-bottom:4px}
-.detail strong{font-size:16px}
+.detail small{display:block;color:#38bdf8;font-size:11px;letter-spacing:.12em;margin-bottom:4px;font-weight:700}
+.detail strong{font-size:16px;color:#fff}
 .detail strong a:hover{color:#38bdf8}
 
 .modal{
@@ -250,7 +255,7 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
 .close{position:fixed;right:25px;top:20px;font-size:40px;cursor:pointer;color:#bbb;transition:.3s}
 .close:hover{color:#38bdf8;transform:rotate(90deg)}
 
-footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:space-between}
+footer{padding:30px 0;color:#a1a1aa;font-size:13px;display:flex;justify-content:space-between}
 .reveal{opacity:0;transform:translateY(50px);transition:opacity .9s ease,transform .9s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
@@ -374,7 +379,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   <div class="wrap">
     <div class="head"><h2>LET'S<br>WORK.</h2><span>05 / CONTACT</span></div>
     <div class="contact">
-      <div><p style="color:#aaa;font-size:18px;">
+      <div><p style="color:#d4d4d8;font-size:18px;">
         Website၊ POS စနစ်များမှစ၍ ဖန်တီးမှုအပြည့်ပါဝင်သော Media Production နှင့် Digital Ads Campaign များအထိ စီးပွားရေးလုပ်ငန်းတိုးတက်စေရန် အတူလက်တွဲလုပ်ဆောင်ကြပါစို့။
       </p></div>
       <div>
