@@ -5,7 +5,94 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Htet Wai Naing — MMBS-MYANMAR</title>
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080808;color:#f5f5f5;font-family:Arial,sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}.wrap{max-width:1200px;margin:auto;padding:0 28px}nav{position:sticky;top:0;z-index:10;background:#080808ee;border-bottom:1px solid #252525}.nav{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;letter-spacing:.08em}.links{display:flex;gap:22px;font-size:13px;color:#aaa}.hero{min-height:85vh;display:flex;align-items:center;border-bottom:1px solid #252525}.eyebrow{color:#888;font-size:12px;letter-spacing:.2em;margin-bottom:20px}h1{font-size:clamp(60px,11vw,145px);line-height:.85;letter-spacing:-.07em;margin:0}.hero p{max-width:700px;color:#aaa;font-size:18px;margin-top:35px}.btn{display:inline-block;border:1px solid #444;border-radius:30px;padding:11px 20px;margin:10px 8px 0 0;font-size:13px}.primary{background:#fff;color:#000;border-color:#fff}section{padding:100px 0;border-bottom:1px solid #252525}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:45px}.head h2{font-size:clamp(40px,6vw,76px);line-height:.9;letter-spacing:-.05em;margin:0}.head span{font-size:12px;color:#666;letter-spacing:.15em}.about{display:grid;grid-template-columns:1fr 1fr;gap:60px}.about p{font-size:18px;color:#c5c5c5}.profs,.skills,.videos,.designs{display:grid;gap:14px}.profs{grid-template-columns:1fr 1fr}.prof,.skill,.video{background:#111;border:1px solid #252525;border-radius:17px;padding:22px}.prof b{display:block;margin-bottom:8px}.prof span{color:#999;font-size:14px}.videos{grid-template-columns:repeat(3,1fr)}.video{padding:0;overflow:hidden}.video iframe{width:100%;aspect-ratio:16/9;border:0;display:block;background:#000}.cap{padding:16px;color:#999;font-size:13px}.designs{grid-template-columns:repeat(4,1fr)}.design{border:1px solid #252525;border-radius:14px;overflow:hidden;cursor:pointer}.design img{width:100%;aspect-ratio:1;object-fit:cover;display:block}.skills{grid-template-columns:repeat(4,1fr)}.skill{min-height:150px}.skill small{color:#666}.skill h3{margin-top:50px}.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}.contact h2{font-size:clamp(50px,7vw,90px);line-height:.9;margin:0}.contact p{color:#999}.detail{padding:18px 0;border-bottom:1px solid #252525}.detail small{display:block;color:#666;font-size:10px;letter-spacing:.16em;margin-bottom:5px}.detail strong{font-size:16px}.detail a:hover{opacity:.65}.modal{display:none;position:fixed;inset:0;background:#000e;z-index:30;align-items:center;justify-content:center;padding:20px}.modal.open{display:flex}.modal img{max-width:95%;max-height:90%}.close{position:fixed;right:25px;top:15px;font-size:35px;cursor:pointer}footer{padding:28px 0;color:#666;font-size:12px;display:flex;justify-content:space-between}@media(max-width:800px){.links{display:none}.about,.contact{grid-template-columns:1fr}.videos{grid-template-columns:1fr}.designs{grid-template-columns:1fr 1fr}.skills{grid-template-columns:1fr 1fr}.profs{grid-template-columns:1fr}}@media(max-width:480px){.skills{grid-template-columns:1fr}.wrap{padding:0 18px}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#080808;color:#f5f5f5;font-family:Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:auto;padding:0 28px}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:10;background:#080808ee;border-bottom:1px solid #252525;backdrop-filter:blur(8px)}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.08em}
+.links{display:flex;gap:22px;font-size:13px;color:#aaa}
+
+/* Hero */
+.hero{min-height:85vh;display:flex;align-items:center;border-bottom:1px solid #252525}
+.eyebrow{color:#888;font-size:12px;letter-spacing:.2em;margin-bottom:20px}
+h1{font-size:clamp(60px,11vw,145px);line-height:.85;letter-spacing:-.07em;margin:0}
+.hero p{max-width:700px;color:#aaa;font-size:18px;margin-top:35px}
+.btn{display:inline-block;border:1px solid #444;border-radius:30px;padding:11px 20px;margin:10px 8px 0 0;font-size:13px}
+.primary{background:#fff;color:#000;border-color:#fff}
+
+/* Sections */
+section{padding:100px 0;border-bottom:1px solid #252525}
+.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:45px}
+.head h2{font-size:clamp(40px,6vw,76px);line-height:.9;letter-spacing:-.05em;margin:0}
+.head span{font-size:12px;color:#666;letter-spacing:.15em}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.about p{font-size:18px;color:#c5c5c5}
+
+/* Grids */
+.profs,.skills,.videos,.designs{display:grid;gap:14px}
+.profs{grid-template-columns:1fr 1fr}
+.prof,.skill,.video{background:#111;border:1px solid #252525;border-radius:17px;padding:22px}
+.prof b{display:block;margin-bottom:8px}
+.prof span{color:#999;font-size:14px}
+
+/* Video Section (Mobile-friendly aspect ratio) */
+.videos{grid-template-columns:repeat(3,1fr)}
+.video{padding:0;overflow:hidden}
+.video-wrapper{position:relative;width:100%;padding-top:56.25%;background:#000}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.cap{padding:16px;color:#999;font-size:13px;display:flex;justify-content:space-between;align-items:center}
+.cap a{color:#4ea8de;font-size:12px;text-decoration:underline}
+
+/* Designs */
+.designs{grid-template-columns:repeat(4,1fr)}
+.design{border:1px solid #252525;border-radius:14px;overflow:hidden;cursor:pointer}
+.design img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+
+/* Skills */
+.skills{grid-template-columns:repeat(4,1fr)}
+.skill{min-height:150px}
+.skill small{color:#666}
+.skill h3{margin-top:50px}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}
+.contact h2{font-size:clamp(50px,7vw,90px);line-height:.9;margin:0}
+.contact p{color:#999}
+.detail{padding:18px 0;border-bottom:1px solid #252525}
+.detail small{display:block;color:#666;font-size:10px;letter-spacing:.16em;margin-bottom:5px}
+.detail strong{font-size:16px}
+.detail a:hover{opacity:.65}
+
+/* Modal */
+.modal{display:none;position:fixed;inset:0;background:#000e;z-index:30;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal img{max-width:95%;max-height:90%}
+.close{position:fixed;right:25px;top:15px;font-size:35px;cursor:pointer}
+
+/* Footer */
+footer{padding:28px 0;color:#666;font-size:12px;display:flex;justify-content:space-between}
+
+/* Responsive queries */
+@media(max-width:992px){
+  .videos{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:800px){
+  .links{display:none}
+  .about,.contact{grid-template-columns:1fr}
+  .videos{grid-template-columns:1fr}
+  .designs{grid-template-columns:1fr 1fr}
+  .skills{grid-template-columns:1fr 1fr}
+  .profs{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .skills{grid-template-columns:1fr}
+  .wrap{padding:0 18px}
+}
 </style>
 </head>
 <body>
@@ -31,12 +118,59 @@
 <div class="prof"><b>Project Management & Data Analysis</b><span>Timely delivery, resource allocation, KPI tracking, and ROI-focused campaign optimization</span></div>
 </div></div></div></section>
 
+<!-- Video Showcase (Total 6 Videos) -->
 <section id="videos"><div class="wrap">
 <div class="head"><h2>VIDEO<br>SHOWCASE</h2><span>02 / MEDIA</span></div>
 <div class="videos">
-<div class="video"><iframe src="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/preview" allow="autoplay;fullscreen"></iframe><div class="cap">Video Project 01 — Creative Production</div></div>
-<div class="video"><iframe src="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/preview" allow="autoplay;fullscreen"></iframe><div class="cap">Video Project 02 — Commercial / Social Media</div></div>
-<div class="video"><iframe src="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/preview" allow="autoplay;fullscreen"></iframe><div class="cap">Video Project 03 — Camera & Editing</div></div>
+
+  <!-- Video 01 -->
+  <div class="video">
+    <div class="video-wrapper">
+      <iframe src="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="cap"><span>Video Project 01 — Creative Production</span><a href="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/view" target="_blank" rel="noopener">Open ↗</a></div>
+  </div>
+
+  <!-- Video 02 -->
+  <div class="video">
+    <div class="video-wrapper">
+      <iframe src="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="cap"><span>Video Project 02 — Commercial / Social Media</span><a href="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/view" target="_blank" rel="noopener">Open ↗</a></div>
+  </div>
+
+  <!-- Video 03 -->
+  <div class="video">
+    <div class="video-wrapper">
+      <iframe src="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="cap"><span>Video Project 03 — Camera & Editing</span><a href="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/view" target="_blank" rel="noopener">Open ↗</a></div>
+  </div>
+
+  <!-- Video 04 -->
+  <div class="video">
+    <div class="video-wrapper">
+      <iframe src="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="cap"><span>Video Project 04 — Brand Storytelling</span><a href="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/view" target="_blank" rel="noopener">Open ↗</a></div>
+  </div>
+
+  <!-- Video 05 -->
+  <div class="video">
+    <div class="video-wrapper">
+      <iframe src="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="cap"><span>Video Project 05 — Motion & Visuals</span><a href="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/view" target="_blank" rel="noopener">Open ↗</a></div>
+  </div>
+
+  <!-- Video 06 -->
+  <div class="video">
+    <div class="video-wrapper">
+      <iframe src="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="cap"><span>Video Project 06 — Digital Campaign</span><a href="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/view" target="_blank" rel="noopener">Open ↗</a></div>
+  </div>
+
 </div></div></section>
 
 <section id="design"><div class="wrap">
