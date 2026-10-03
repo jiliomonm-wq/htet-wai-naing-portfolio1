@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services & Pricing Plans â€” MMBS-MYANMAR</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#09090b;
+  color:#f4f4f5;
+  font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height:1.6;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* Background MMBS Watermark (20% Opacity) */
+body::before{
+  content:"MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS ";
+  position:fixed;
+  top:-50%;left:-50%;width:200%;height:200%;
+  z-index:-1;
+  font-size:75px;font-weight:900;
+  color:rgba(255,255,255,0.035);
+  display:flex;flex-wrap:wrap;gap:100px 140px;
+  transform:rotate(-18deg);
+  pointer-events:none;
+}
+
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:auto;padding:0 24px}
+
+/* Sticky Navbar */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(9,9,11,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #222;
+}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-weight:800;letter-spacing:.08em;font-size:18px;display:flex;align-items:center;gap:10px}
+.back-btn{
+  background:#1e1e24;padding:8px 20px;border-radius:20px;
+  font-size:13px;border:1px solid #333;color:#fff;
+  transition:0.3s;display:flex;align-items:center;gap:6px;
+}
+.back-btn:hover{background:#38bdf8;color:#000;border-color:#38bdf8}
+
+/* Header */
+.page-header{text-align:center;padding:70px 0 40px}
+.page-header span{color:#38bdf8;font-size:12px;letter-spacing:2px;font-weight:700;text-transform:uppercase}
+.page-header h1{font-size:clamp(32px,5vw,54px);margin:10px 0 16px;line-height:1.1}
+.page-header p{color:#a1a1aa;max-width:680px;margin:auto;font-size:16px}
+
+/* Category Cards (From Image 2/12) */
+.cat-grid{
+  display:grid;grid-template-columns:repeat(3, 1fr);gap:20px;margin-bottom:60px;
+}
+.cat-card{
+  background:#131317;border:1px solid #24242c;border-radius:20px;padding:30px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  transition:transform .3s, border-color .3s;
+}
+.cat-card:hover{transform:translateY(-5px);border-color:#38bdf8}
+.cat-card h3{margin:0 0 16px;font-size:18px;color:#fff;letter-spacing:.03em;text-transform:uppercase}
+.cat-card ul{list-style:none;padding:0;margin:0 0 24px}
+.cat-card li{font-size:13px;color:#a1a1aa;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.cat-card li::before{content:"â€¢";color:#38bdf8;font-size:18px}
+.learn-btn{
+  display:inline-block;text-align:center;padding:10px 18px;background:#202028;
+  border-radius:10px;font-size:12px;font-weight:700;border:1px solid #333;color:#38bdf8;
+  transition:.3s;
+}
+.cat-card:hover .learn-btn{background:#38bdf8;color:#000}
+
+/* Skills & Proficiencies Grid (From Image 3/12) */
+.prof-section{background:#111115;border:1px solid #22222a;border-radius:24px;padding:40px;margin-bottom:70px}
+.prof-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px;margin-top:25px}
+.prof-box{background:#17171d;border:1px solid #282832;border-radius:16px;padding:22px}
+.prof-box h4{margin:0 0 10px;font-size:16px;color:#38bdf8}
+.prof-box p{margin:0;font-size:13px;color:#a1a1aa;line-height:1.6}
+.prof-sub-banner{
+  margin-top:25px;background:#1a1a22;border:1px solid #2d2d3a;padding:20px;border-radius:14px;
+}
+.prof-sub-banner b{color:#fff;display:block;margin-bottom:8px;font-size:14px}
+.prof-sub-banner p{margin:0;font-size:13px;color:#aaa}
+
+/* Main Pricing Plans (From Image 4, 5, 6, 7) */
+.sec-title{text-align:center;margin:60px 0 35px}
+.sec-title h2{font-size:32px;margin:0 0 8px}
+.sec-title p{color:#888;font-size:14px}
+
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(3, 1fr);gap:24px;margin-bottom:60px;
+}
+.price-card{
+  background:#131317;border:1px solid #26262e;border-radius:24px;padding:36px 28px;
+  display:flex;flex-direction:column;position:relative;
+  transition:transform .3s, border-color .3s;
+}
+.price-card:hover{transform:translateY(-6px);border-color:#555}
+.price-card.featured{
+  border-color:#38bdf8;background:linear-gradient(180deg, #181c24 0%, #131317 100%);
+  box-shadow:0 12px 35px rgba(56,189,248,0.14);
+}
+.badge{
+  position:absolute;top:18px;right:20px;background:#38bdf8;color:#000;
+  font-size:10px;font-weight:800;letter-spacing:1px;padding:4px 10px;border-radius:12px;text-transform:uppercase;
+}
+.plan-name{font-size:22px;font-weight:700;margin:0 0 6px}
+.plan-dur{font-size:13px;color:#888;margin-bottom:18px}
+.plan-price{font-size:32px;font-weight:900;color:#fff;margin-bottom:20px;line-height:1}
+.plan-price small{font-size:14px;color:#888;font-weight:normal}
+
+.feature-list{list-style:none;padding:0;margin:0 0 30px;flex-grow:1}
+.feature-list li{
+  font-size:13px;color:#ccc;margin-bottom:12px;display:flex;align-items:flex-start;gap:10px;
+}
+.feature-list li::before{content:"âœ“";color:#38bdf8;font-weight:bold}
+
+.action-btn{
+  display:block;text-align:center;background:#202028;color:#fff;
+  padding:12px;border-radius:12px;font-size:13px;font-weight:600;
+  border:1px solid #333;transition:.3s;
+}
+.action-btn:hover{background:#fff;color:#000}
+.featured .action-btn{background:#38bdf8;color:#000;border-color:#38bdf8}
+
+/* Comparison Table (From Image 8/12) */
+.table-wrap{
+  background:#121216;border:1px solid #26262f;border-radius:20px;overflow-x:auto;margin-bottom:80px;
+}
+table{width:100%;border-collapse:collapse;text-align:left;font-size:13px}
+th, td{padding:16px 20px;border-bottom:1px solid #202028}
+th{background:#181820;color:#bbb;font-weight:600;letter-spacing:.05em}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#171720}
+.highlight-cell{color:#38bdf8;font-weight:bold}
+
+/* Call to action */
+.cta-box{
+  background:linear-gradient(135deg, #181820 0%, #111116 100%);
+  border:1px solid #2e2e3a;border-radius:24px;padding:50px 30px;text-align:center;margin-bottom:80px;
+}
+.cta-box h3{font-size:28px;margin:0 0 10px}
+.cta-box p{color:#999;max-width:550px;margin:0 auto 25px}
+.contact-links{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}
+.contact-pill{
+  background:#22222c;border:1px solid #383848;padding:10px 22px;border-radius:30px;font-size:14px;color:#fff;
+}
+
+footer{padding:30px 0;color:#666;font-size:13px;display:flex;justify-content:space-between;border-top:1px solid #202028}
+
+@media(max-width:900px){
+  .cat-grid,.pricing-grid,.prof-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav">
+    <div class="brand">MMBS-MYANMAR <span>ðŸ±</span></div>
+    <div class="links">
+      <a href="index.html" class="back-btn">â† Back to Portfolio</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- Header -->
+  <header class="page-header">
+    <span>Welcome to MMBS: Empowering Your Business Since 2019</span>
+    <h1>Digital Marketing Doesn't Have To Be Difficult</h1>
+    <p>á€œá€¯á€•á€ºá€„á€”á€ºá€¸á€¡á€œá€­á€¯á€€á€º á€¡á€žá€„á€·á€ºá€á€±á€¬á€ºá€†á€¯á€¶á€¸ á€›á€½á€±á€¸á€á€»á€šá€ºá€”á€­á€¯á€„á€ºá€žá€±á€¬ All-In-One Digital MarketingáŠ Video Production á€”á€¾á€„á€·á€º Business IT Solutions á€™á€»á€¬á€¸</p>
+  </header>
+
+  <!-- Category Overview (Image 2/12) -->
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div>
+        <h3>Digital Marketing Packages</h3>
+        <ul>
+          <li>Normal Packages</li>
+          <li>Premium Packages</li>
+          <li>Gold Packages</li>
+        </ul>
+      </div>
+      <a href="#plans" class="learn-btn">LEARN MORE â†“</a>
+    </div>
+
+    <div class="cat-card" style="border-color:#38bdf8;">
+      <div>
+        <h3 style="color:#38bdf8;">Premium All In One Set Up (VIP)</h3>
+        <ul>
+          <li>Digital Marketing Strategy</li>
+          <li>POS Hardware & IT Solutions</li>
+          <li>Standard Business Website</li>
+          <li>Professional Video & Graphics</li>
+        </ul>
+      </div>
+      <a href="#plans" class="learn-btn" style="background:#38bdf8;color:#000;">LEARN MORE â†“</a>
+    </div>
+
+    <div class="cat-card">
+      <div>
+        <h3>Daily Boosting Packages</h3>
+        <ul>
+          <li>Facebook & TikTok Ads Boosting</li>
+          <li>Graphic Designer & Content Support</li>
+          <li>Professional Video Editing</li>
+          <li>Videographer & Photographer Crew</li>
+        </ul>
+      </div>
+      <a href="#plans" class="learn-btn">LEARN MORE â†“</a>
+    </div>
+  </div>
+
+  <!-- Skills & Proficiencies (Image 3/12) -->
+  <div class="prof-section">
+    <div style="text-align:center;margin-bottom:20px;">
+      <h2 style="margin:0;font-size:26px;">SKILLS & PROFICIENCIES</h2>
+      <span style="color:#71717a;font-size:12px;letter-spacing:1px;">Delivering Seamless Full-Stack Solutions</span>
+    </div>
+
+    <div class="prof-grid">
+      <div class="prof-box">
+        <h4>Core Skills</h4>
+        <p>Cross-channel strategy delivering seamless solutions across Facebook, TikTok, Instagram & YouTube. High-end cinema cameras with advanced video editing.</p>
+      </div>
+      <div class="prof-box">
+        <h4>Project Management</h4>
+        <p>End-to-End execution managing every phase from concept to delivery. Efficient resource allocation and timely delivery to scale with business growth.</p>
+      </div>
+      <div class="prof-box">
+        <h4>Data Analysis</h4>
+        <p>Actionable insights transforming raw advertising data into clear ROI strategies. Continuous KPI monitoring and competitor intelligence.</p>
+      </div>
+    </div>
+
+    <div class="prof-sub-banner">
+      <b>Creative Content Production & Technology</b>
+      <p>á€€á€»á€½á€”á€ºá€¯á€•á€ºá€á€­á€¯á€·á á€¡á€–á€½á€²á€·á€¡á€…á€Šá€ºá€¸á€žá€Šá€º á€…á€®á€¸á€•á€½á€¬á€¸á€›á€±á€¸á€œá€¯á€•á€ºá€„á€”á€ºá€¸á€™á€»á€¬á€¸á€¡á€á€½á€€á€º á€œá€­á€¯á€¡á€•á€ºá€žá€±á€¬ Marketing á€á€”á€ºá€†á€±á€¬á€„á€ºá€™á€¾á€¯á€¡á€¬á€¸á€œá€¯á€¶á€¸á€€á€­á€¯ All-In-One Platform á€¡á€–á€¼á€…á€º á€…á€¯á€…á€Šá€ºá€¸á€•á€±á€¸á€‘á€¬á€¸á€•á€«á€žá€Šá€ºá‹ High-end Cinema Camera á€™á€»á€¬á€¸á€–á€¼á€„á€·á€º á€›á€­á€¯á€€á€ºá€€á€°á€¸á€á€¼á€„á€ºá€¸áŠ Professional EditingáŠ Strategic Media Buying á€”á€¾á€„á€·á€º Business Technology á€¡á€”á€±á€–á€¼á€„á€·á€º Website Development á€”á€¾á€„á€·á€º POS (Point of Sale) System á€™á€»á€¬á€¸á€€á€­á€¯ á€¡á€…á€¡á€†á€¯á€¶á€¸ á€á€¬á€á€”á€ºá€šá€° á€á€Šá€ºá€†á€±á€¬á€€á€ºá€•á€±á€¸á€•á€«á€žá€Šá€ºá‹</p>
+    </div>
+  </div>
+
+  <!-- Main Pricing Plans (Image 4, 5, 6, 7) -->
+  <div class="sec-title" id="plans">
+    <h2>OUR PLANS & PACKAGES</h2>
+    <p>Helping Local Business Over 50+ In Myanmar</p>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- Standard Plan (Image 5/12) -->
+    <div class="price-card">
+      <h3 class="plan-name">Standard Plan</h3>
+      <div class="plan-dur">1 Month (Value-Driven Digital Excellence)</div>
+      <div class="plan-price">500,000 <small>MMK / mo</small></div>
+      <ul class="feature-list">
+        <li><strong>Visual & Creative:</strong> 18 High-Quality Graphic Designs</li>
+        <li>2 Logo Animations (Brand Identity)</li>
+        <li>20 Marketing Captions (High-Converting)</li>
+        <li><strong>Platform Management:</strong> FB & TikTok Admin</li>
+        <li>Customer Message / Comment Active Reply (1 Month)</li>
+        <li>Error Solving & Page Security Support</li>
+        <li><strong>Media Buying:</strong> $20 Boosting Budget Included (Free Ads Setup)</li>
+        <li>Monthly Data Analysis & Growth Report</li>
+      </ul>
+      <a href="tel:09692698685" class="action-btn">Choose Standard</a>
+    </div>
+
+    <!-- Gold Plan (Image 6/12) -->
+    <div class="price-card featured">
+      <span class="badge">Most Popular</span>
+      <h3 class="plan-name">Gold Plan</h3>
+      <div class="plan-dur">1 Month (Professional Media Production)</div>
+      <div class="plan-price">Professional <small>/ 1 Mo</small></div>
+      <ul class="feature-list">
+        <li><strong>Cinema Grade Gear:</strong> Sony Alpha 7 III + Gimbal Stabilizer</li>
+        <li>Studio Lighting (Godox/Aputure) + Wireless Mic & Stands</li>
+        <li>Videographer (1) + Photographer (1) Dedicated Crew</li>
+        <li>3 Professional Commercial Videos (Premium Editing)</li>
+        <li>30 High-End Graphic Designs + 4 Logo Animations</li>
+        <li>30 Marketing Captions & Post Scheduling</li>
+        <li>Full Social Media Admin & Customer Reply Service</li>
+        <li>Free Media Buying Setup & Optimization</li>
+        <li>Bi-Weekly Data Intelligence Report</li>
+      </ul>
+      <a href="tel:09692698685" class="action-btn">Choose Gold</a>
+    </div>
+
+    <!-- Premium Plan (Image 7/12) -->
+    <div class="price-card">
+      <h3 class="plan-name">Premium Plan</h3>
+      <div class="plan-dur">3 Months ALL IN ONE (Ultimate Transformation)</div>
+      <div class="plan-price">Ultimate VIP <small>/ 3-Mo</small></div>
+      <ul class="feature-list">
+        <li><strong>Full-Scale POS & IT:</strong> 2 High-End PCs + 4 Heat Printers + 4 Tablets</li>
+        <li>Micro POS Software + Wi-Fi Networking Setup</li>
+        <li><strong>Standard Business Website:</strong> (1 Website Setup)</li>
+        <li>Cinema Grade Cameras x2 (Shooting 2 Days/Month)</li>
+        <li>8 Pro Commercial Videos + 30 TikToks / Reels</li>
+        <li>95 Graphic Designs + 23 Logo Animations</li>
+        <li>Sticker Designs + Business Cards Print Media</li>
+        <li>3 Months Dedicated Social Media Admin & Reply Team</li>
+        <li>$100 Boosting Budget Bonus Included</li>
+      </ul>
+      <a href="tel:09692698685" class="action-btn">Choose Premium</a>
+    </div>
+  </div>
+
+  <!-- Comparison Table (Image 8/12) -->
+  <div class="sec-title">
+    <h2>Detailed Feature Comparison</h2>
+    <p>á€á€”á€ºá€†á€±á€¬á€„á€ºá€™á€¾á€¯á€™á€»á€¬á€¸á á€€á€½á€²á€•á€¼á€¬á€¸á€á€»á€€á€ºá€™á€»á€¬á€¸á€€á€­á€¯ á€”á€¾á€­á€¯á€„á€ºá€¸á€šá€¾á€‰á€ºá€œá€±á€·á€œá€¬á€›á€”á€º</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Features (á€á€”á€ºá€†á€±á€¬á€„á€ºá€™á€¾á€¯á€™á€»á€¬á€¸)</th>
+          <th>Standard Plan (5 á€žá€­á€”á€ºá€¸)</th>
+          <th>Gold Plan</th>
+          <th>Premium Plan (3 Months)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Duration (á€€á€¬á€œ)</td>
+          <td>1 á€œ</td>
+          <td>1 á€œ</td>
+          <td class="highlight-cell">3 á€œ</td>
+        </tr>
+        <tr>
+          <td>Production (á€›á€­á€¯á€€á€ºá€€á€°á€¸á€›á€±á€¸)</td>
+          <td>-</td>
+          <td>Sony A7III + Gimbal (1 á€€á€¼á€­á€™á€º)</td>
+          <td class="highlight-cell">Pro Cameras x2 (2 á€€á€¼á€­á€™á€º)</td>
+        </tr>
+        <tr>
+          <td>Video Content</td>
+          <td>-</td>
+          <td>3 Pro Commercial Videos</td>
+          <td class="highlight-cell">8 Pro Videos + 30 TikToks</td>
+        </tr>
+        <tr>
+          <td>Graphic & Logo</td>
+          <td>18 Designs + 2 Logos</td>
+          <td>30 Designs + 4 Logos</td>
+          <td class="highlight-cell">95 Designs + 23 Logos</td>
+        </tr>
+        <tr>
+          <td>Content / Posts</td>
+          <td>20 Contents</td>
+          <td>30 Contents</td>
+          <td class="highlight-cell">95 Contents</td>
+        </tr>
+        <tr>
+          <td>POS & IT System</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="highlight-cell">2 PCs, 4 Printers, 4 Tablets + POS</td>
+        </tr>
+        <tr>
+          <td>Admin & Reply</td>
+          <td>1 Month</td>
+          <td>1 Month</td>
+          <td class="highlight-cell">3 Months Dedicated</td>
+        </tr>
+        <tr>
+          <td>Boosting Bonus</td>
+          <td>$20 Free Credit</td>
+          <td>Free Setup & Target Strategy</td>
+          <td class="highlight-cell">$100 Free Credit Bonus</td>
+        </tr>
+        <tr>
+          <td>Extra Branding</td>
+          <td>-</td>
+          <td>-</td>
+          <td class="highlight-cell">Website, Business Cards, Stickers</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Contact CTA -->
+  <div class="cta-box">
+    <h3>Ready to transform your business?</h3>
+    <p>á€žá€„á€·á€ºá€œá€¯á€•á€ºá€„á€”á€ºá€¸á€¡á€á€½á€€á€º á€¡á€žá€„á€·á€ºá€á€±á€¬á€ºá€†á€¯á€¶á€¸ á€á€”á€ºá€†á€±á€¬á€„á€ºá€™á€¾á€¯á€€á€­á€¯ á€†á€½á€±á€¸á€”á€½á€±á€¸á€á€­á€¯á€„á€ºá€•á€„á€ºá€›á€”á€º á€á€­á€¯á€€á€ºá€›á€­á€¯á€€á€º á€†á€€á€ºá€žá€½á€šá€ºá€œá€­á€¯á€€á€ºá€•á€«á‹</p>
+    <div class="contact-links">
+      <a href="tel:09692698685" class="contact-pill">ðŸ“ž 09-692698685</a>
+      <span class="contact-pill">ðŸ“ Mandalay, Myanmar</span>
+    </div>
+  </div>
+
+</div>
+
+<footer class="wrap">
+  <span>Â© 2026 MMBS-MYANMAR</span>
+  <span>Htet Wai Naing â€” Media Specialist</span>
+</footer>
+
+</body>
+</html>
