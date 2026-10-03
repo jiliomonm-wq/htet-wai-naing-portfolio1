@@ -92,7 +92,7 @@ nav{
 .profile-img-wrap{
   position:relative;
   width:100%;
-  aspect-ratio:1/1.1;
+  aspect-ratio:1/1.2;
   border-radius:22px;
   overflow:hidden;
   border:2px solid #2e2e38;
@@ -161,8 +161,8 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
 .head h2{font-size:clamp(32px,5vw,56px);line-height:.95;margin:0;letter-spacing:-.03em}
 .head span{font-size:12px;color:#71717a;letter-spacing:.15em}
 
-/* Video Showcase (Clean & Working Fallback Players) */
-.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+/* Video Showcase Section (6 Videos) */
+.videos{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
 .video{
   background:#131317;
   border:1px solid #24242c;
@@ -171,14 +171,14 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
   transition:transform .3s;
 }
 .video:hover{transform:translateY(-4px)}
-.video iframe, .video video{
+.video iframe{
   width:100%;
   aspect-ratio:16/9;
   border:0;
   display:block;
   background:#000;
 }
-.cap{padding:16px;color:#a1a1aa;font-size:13px;font-weight:500}
+.cap{padding:14px 16px;color:#a1a1aa;font-size:13px;font-weight:500}
 
 /* Graphic Design Highlight & Shimmer Animation */
 .designs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -199,7 +199,6 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
   transition:filter .4s ease, transform .4s ease;
   filter:brightness(0.92);
 }
-/* Shimmer Light beam */
 .design::after{
   content:'';
   position:absolute;
@@ -245,7 +244,7 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
 .detail small{display:block;color:#71717a;font-size:11px;letter-spacing:.12em;margin-bottom:4px}
 .detail strong{font-size:16px}
 
-/* Modal Popup for Photos */
+/* Modal Popup */
 .modal{
   display:none;
   position:fixed;
@@ -304,18 +303,18 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   <div class="wrap">
     <div class="hero-card">
       <div class="profile-img-wrap">
-        <!-- သင့်ပုံအသစ် design-1.webp သို့မဟုတ် ပုံဖိုင်နာမည်ထည့်ပါ -->
-        <img src="design-1.webp" alt="Htet Wai Naing Profile">
+        <!-- အပေါ်က ပေးပို့ထားသော Profile ပုံ -->
+        <img src="profile.png" alt="Htet Wai Naing Profile">
         <div class="profile-tag">Age 24 • Graduating in 2027</div>
       </div>
 
       <div class="hero-content">
-        <div class="sub-name">MMBS-MYANMAR Media Specialist</div>
+        <div class="sub-name">MMBS-MYANMAR</div>
         <h1 class="hero-title">Htet Wai Naing</h1>
         <div class="role-badge">Digital Solutions & Creative Media Director</div>
         
         <p class="bio-text">
-          အသက် ၂၄ နှစ်ရှိပြီး ၂၀၂၇ ခုနှစ်တွင် ဘွဲ့ရရှိမည့် Media & Digital Specialist ဖြစ်ပါသည်။ MMBS-MYANMAR ဖြင့်အတူ Local စီးပွားရေးလုပ်ငန်းပေါင်း ၃၀ ကျော်အတွက် Video Production, Graphic Design, Website Development နှင့် Marketing Solutions များကို အောင်မြင်စွာ တာဝန်ယူ ဆောင်ရွက်ပေးလျက်ရှိပါသည်။
+          Digital Solutions & Media Specialist since 2019, serving 30+ businesses with expertise in Digital Marketing, Video Production, Editing, Animation, Motion Graphics, AI Commercials, Branding, Website & POS, Media Buying, and IT Solutions.
         </p>
 
         <!-- Collaborations / Businesses Worked With -->
@@ -356,7 +355,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </header>
 
-<!-- Video Showcase Section -->
+<!-- Video Showcase Section (6 Videos) -->
 <section id="videos">
   <div class="wrap">
     <div class="head">
@@ -365,20 +364,40 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
     </div>
     
     <div class="videos">
-      <!-- Video 1 (YouTube Embed သုံးနိုင်ပါသည်) -->
+      <!-- Video 1 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Project 01" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="cap">Commercial Video — Brand Production</div>
+        <iframe src="https://www.youtube.com/embed/TH83YeKcBDg" title="Video Project 01" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 01 — Commercial Showcase</div>
       </div>
+
       <!-- Video 2 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Project 02" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="cap">Social Media Creative Ads — MMBS Project</div>
+        <iframe src="https://www.youtube.com/embed/B1qxBdy_RSU" title="Video Project 02" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 02 — Creative Production</div>
       </div>
+
       <!-- Video 3 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Project 03" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <div class="cap">Camera & Cinematic Editing Showcase</div>
+        <iframe src="https://www.youtube.com/embed/6GRK1bydtFw" title="Video Project 03" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 03 — Media Campaign</div>
+      </div>
+
+      <!-- Video 4 -->
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/OskU145ncsE" title="Video Project 04" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 04 — Social Media Ad</div>
+      </div>
+
+      <!-- Video 5 -->
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/jq-h9OQ3dy0" title="Video Project 05" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 05 — Brand Visuals</div>
+      </div>
+
+      <!-- Video 6 -->
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/LVt8VhpevIg" title="Video Project 06" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 06 — Cinematic Edit</div>
       </div>
     </div>
   </div>
@@ -416,10 +435,10 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
       <div class="skill"><small>02</small><h3>Graphic & Brand Design</h3></div>
       <div class="skill"><small>03</small><h3>Digital Marketing & Boosting</h3></div>
       <div class="skill"><small>04</small><h3>Website & POS Development</h3></div>
-      <div class="skill"><small>05</small><h3>2D / 3D Animation</h3></div>
-      <div class="skill"><small>06</small><h3>Social Media Strategy</h3></div>
-      <div class="skill"><small>07</small><h3>Brand Identity & Logo</h3></div>
-      <div class="skill"><small>08</small><h3>Media Buying & Optimization</h3></div>
+      <div class="skill"><small>05</small><h3>Motion Graphics & Animation</h3></div>
+      <div class="skill"><small>06</small><h3>AI Commercials</h3></div>
+      <div class="skill"><small>07</small><h3>Media Buying Strategy</h3></div>
+      <div class="skill"><small>08</small><h3>IT Solutions</h3></div>
     </div>
   </div>
 </section>
@@ -475,4 +494,4 @@ m.onclick = (e) => { if(e.target === m) m.classList.remove('open'); };
 </script>
 
 </body>
-</html>
+                                                          </html>
