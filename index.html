@@ -49,7 +49,7 @@ a{color:inherit;text-decoration:none}
 nav{
   position:sticky;
   top:0;
-  z-index:90;
+  z-index:100;
   background:rgba(9,9,11,0.85);
   backdrop-filter:blur(12px);
   border-bottom:1px solid #222;
@@ -68,28 +68,10 @@ nav{
   30%{transform:translateY(-6px) rotate(-8deg);}
   60%{transform:translateY(-2px) rotate(8deg);}
 }
-.links{display:flex;gap:20px;font-size:14px;color:#aaa;align-items:center}
+.links{display:flex;gap:22px;font-size:14px;color:#aaa}
 .links a:hover{color:#fff}
 
-/* Button to Trigger the Service Layer */
-.service-layer-btn{
-  cursor:pointer;
-  background:linear-gradient(135deg, #1e293b, #0f172a);
-  color:#38bdf8 !important;
-  font-weight:bold;
-  padding:7px 16px;
-  border-radius:20px;
-  border:1px solid #38bdf8;
-  transition:.3s ease;
-  box-shadow:0 0 12px rgba(56,189,248,0.2);
-}
-.service-layer-btn:hover{
-  background:#38bdf8;
-  color:#000 !important;
-  box-shadow:0 0 20px rgba(56,189,248,0.6);
-}
-
-/* Hero Section */
+/* Hero Section (Card Profile Style) */
 .hero{
   min-height:90vh;
   display:flex;
@@ -152,7 +134,7 @@ nav{
 .client-tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag-item{background:#23232a;font-size:12px;padding:4px 12px;border-radius:8px;color:#e2e2e2;border:1px solid #33333d}
 
-/* Tech Badges */
+/* Tech Badges with Status Bars */
 .software-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
@@ -179,7 +161,7 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
 .head h2{font-size:clamp(32px,5vw,56px);line-height:.95;margin:0;letter-spacing:-.03em}
 .head span{font-size:12px;color:#71717a;letter-spacing:.15em}
 
-/* 6 Videos Showcase */
+/* Video Showcase Section (6 Videos) */
 .videos{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px}
 .video{
   background:#131317;
@@ -198,7 +180,7 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
 }
 .cap{padding:14px 16px;color:#a1a1aa;font-size:13px;font-weight:500}
 
-/* Graphic Design Highlight & Shimmer */
+/* Graphic Design Highlight & Shimmer Animation */
 .designs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .design{
   position:relative;
@@ -234,8 +216,12 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
   border-color:#60a5fa;
   box-shadow:0 0 25px rgba(96,165,250,0.35);
 }
-.design:hover img{filter:brightness(1.15) contrast(1.05)}
-.design:hover::after{left:180%}
+.design:hover img{
+  filter:brightness(1.15) contrast(1.05);
+}
+.design:hover::after{
+  left:180%;
+}
 
 /* Core Skills */
 .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
@@ -252,147 +238,31 @@ section{padding:90px 0;border-bottom:1px solid #1f1f23}
 .skill small{color:#64748b;font-weight:bold}
 .skill h3{margin:0;font-size:18px}
 
-/* Contact */
+/* Contact Section */
 .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}
 .detail{padding:16px 0;border-bottom:1px solid #22222a}
 .detail small{display:block;color:#71717a;font-size:11px;letter-spacing:.12em;margin-bottom:4px}
 .detail strong{font-size:16px}
 
-/* =========================================
-   FULL SCREEN SERVICE & PRICING PAGE LAYER
-========================================= */
-.service-layer{
+/* Modal Popup */
+.modal{
+  display:none;
   position:fixed;
   inset:0;
-  background:#09090be6;
-  backdrop-filter:blur(20px);
-  z-index:999;
-  overflow-y:auto;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(30px);
-  transition:all 0.35s ease-in-out;
-  padding:40px 0 80px;
-}
-.service-layer.active{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-}
-.layer-close-btn{
-  position:fixed;
-  top:24px;
-  right:32px;
-  background:#222;
-  border:1px solid #444;
-  color:#fff;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  display:flex;
+  background:rgba(0,0,0,0.92);
+  z-index:200;
   align-items:center;
   justify-content:center;
-  font-size:24px;
-  cursor:pointer;
-  z-index:1001;
-  transition:.3s ease;
-}
-.layer-close-btn:hover{background:#ef4444;border-color:#ef4444;transform:rotate(90deg)}
-
-/* Service Layer Internal Styling */
-.layer-header{text-align:center;margin-bottom:45px}
-.layer-header span{color:#38bdf8;font-size:12px;letter-spacing:2px;font-weight:700;text-transform:uppercase}
-.layer-header h1{font-size:clamp(30px,5vw,52px);margin:10px 0;line-height:1.1}
-
-.gear-bar{
-  background:#131317;
-  border:1px solid #26262f;
-  border-radius:20px;
-  padding:24px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:20px;
-  margin-bottom:50px;
-}
-.gear-item{display:flex;align-items:center;gap:15px}
-.gear-icon{font-size:26px;background:#1c1c24;padding:12px;border-radius:12px;border:1px solid #333}
-.gear-info h4{margin:0;font-size:15px;color:#fff}
-.gear-info p{margin:2px 0 0;font-size:12px;color:#888}
-
-.pricing-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:24px;
-  margin-bottom:60px;
-}
-.price-card{
-  background:#131317;
-  border:1px solid #26262e;
-  border-radius:24px;
-  padding:32px 26px;
-  display:flex;
-  flex-direction:column;
-  position:relative;
-}
-.price-card.featured{
-  border-color:#38bdf8;
-  background:linear-gradient(180deg, #181c24 0%, #131317 100%);
-  box-shadow:0 12px 35px rgba(56,189,248,0.15);
-}
-.badge{
-  position:absolute;top:18px;right:20px;
-  background:#38bdf8;color:#000;
-  font-size:10px;font-weight:800;letter-spacing:1px;
-  padding:4px 10px;border-radius:12px;text-transform:uppercase;
-}
-.plan-name{font-size:22px;font-weight:700;margin:0 0 6px}
-.plan-dur{font-size:13px;color:#888;margin-bottom:18px}
-.plan-price{font-size:32px;font-weight:900;color:#fff;margin-bottom:20px;line-height:1}
-.plan-price small{font-size:14px;color:#888;font-weight:normal}
-
-.feature-list{list-style:none;padding:0;margin:0 0 30px;flex-grow:1}
-.feature-list li{
-  font-size:13px;color:#ccc;margin-bottom:10px;
-  display:flex;align-items:flex-start;gap:10px;
-}
-.feature-list li::before{content:"✓";color:#38bdf8;font-weight:bold}
-
-.action-btn{
-  display:block;text-align:center;
-  background:#202028;color:#fff;
-  padding:12px;border-radius:12px;
-  font-size:13px;font-weight:600;
-  border:1px solid #333;transition:.3s;
-}
-.action-btn:hover{background:#fff;color:#000}
-.featured .action-btn{background:#38bdf8;color:#000;border-color:#38bdf8}
-
-.tiktok-grid{display:grid;grid-template-columns:repeat(2, 1fr);gap:24px;margin-bottom:60px}
-.tiktok-card{background:#131317;border:1px solid #25252f;border-radius:20px;padding:28px}
-
-.table-wrap{
-  background:#131317;
-  border:1px solid #26262f;
-  border-radius:20px;
-  overflow-x:auto;
-  margin-bottom:60px;
-}
-table{width:100%;border-collapse:collapse;text-align:left;font-size:13px}
-th, td{padding:16px 20px;border-bottom:1px solid #202028}
-th{background:#181820;color:#bbb;font-weight:600}
-.highlight-cell{color:#38bdf8;font-weight:bold}
-
-/* Modal Popup for Photos */
-.modal{
-  display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);
-  z-index:1005;align-items:center;justify-content:center;padding:20px;
+  padding:20px;
 }
 .modal.open{display:flex}
-.modal img{max-width:92%;max-height:88%;border-radius:12px}
+.modal img{max-width:92%;max-height:88%;border-radius:12px;border:1px solid #444}
 .close{position:fixed;right:25px;top:20px;font-size:40px;cursor:pointer;color:#bbb}
+.close:hover{color:#fff}
 
 footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:space-between}
 
+/* Responsiveness */
 @media(max-width:900px){
   .hero-card{grid-template-columns:1fr;padding:28px}
   .profile-img-wrap{max-width:320px;margin:0 auto 20px}
@@ -400,29 +270,26 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   .designs{grid-template-columns:1fr 1fr}
   .skills{grid-template-columns:1fr 1fr}
   .contact{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr}
-  .tiktok-grid{grid-template-columns:1fr}
   .links{display:none}
 }
 @media(max-width:500px){
   .designs{grid-template-columns:1fr}
   .skills{grid-template-columns:1fr}
+  .software-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- Navbar with Cat Animation -->
 <nav>
   <div class="wrap nav">
     <div class="brand-box">
       <a class="brand" href="#">MMBS-MYANMAR</a>
-      <span class="cat-anim">🐱✨</span>
+      <span class="cat-anim" title="Meow!">🐱✨</span>
     </div>
     <div class="links">
       <a href="#about">Profile</a>
-      <!-- Service Page Layer ကို ဖွင့်ပေးမည့် Button -->
-      <a href="javascript:void(0)" class="service-layer-btn" id="openServiceLayer">✨ Services & Plans</a>
       <a href="#videos">Videos</a>
       <a href="#design">Graphic Design</a>
       <a href="#skills">Skills</a>
@@ -431,11 +298,12 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- Hero Section Styled as the Card Design -->
 <header class="hero" id="about">
   <div class="wrap">
     <div class="hero-card">
       <div class="profile-img-wrap">
+        <!-- အပေါ်က ပေးပို့ထားသော Profile ပုံ -->
         <img src="profile.png" alt="Htet Wai Naing Profile">
         <div class="profile-tag">Age 24 • Graduating in 2027</div>
       </div>
@@ -449,7 +317,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
           Digital Solutions & Media Specialist since 2019, serving 30+ businesses with expertise in Digital Marketing, Video Production, Editing, Animation, Motion Graphics, AI Commercials, Branding, Website & POS, Media Buying, and IT Solutions.
         </p>
 
-        <!-- Collaborations -->
+        <!-- Collaborations / Businesses Worked With -->
         <div class="client-box">
           <b>Key Brand Collaborations & Clients</b>
           <div class="client-tags">
@@ -462,7 +330,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
           </div>
         </div>
 
-        <!-- Software Skills Badges -->
+        <!-- Software Skills Badges & Bars -->
         <div class="software-grid">
           <div class="soft-card">
             <div class="soft-info"><span>Photoshop</span><span>95%</span></div>
@@ -487,7 +355,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </header>
 
-<!-- 6 Video Showcases -->
+<!-- Video Showcase Section (6 Videos) -->
 <section id="videos">
   <div class="wrap">
     <div class="head">
@@ -496,35 +364,46 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
     </div>
     
     <div class="videos">
+      <!-- Video 1 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/TH83YeKcBDg" title="Project 01" allowfullscreen></iframe>
-        <div class="cap">Commercial Showcase — MMBS Project 01</div>
+        <iframe src="https://www.youtube.com/embed/TH83YeKcBDg" title="Video Project 01" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 01 — Commercial Showcase</div>
       </div>
+
+      <!-- Video 2 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/B1qxBdy_RSU" title="Project 02" allowfullscreen></iframe>
-        <div class="cap">Creative Production — MMBS Project 02</div>
+        <iframe src="https://www.youtube.com/embed/B1qxBdy_RSU" title="Video Project 02" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 02 — Creative Production</div>
       </div>
+
+      <!-- Video 3 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/6GRK1bydtFw" title="Project 03" allowfullscreen></iframe>
-        <div class="cap">Media Campaign — MMBS Project 03</div>
+        <iframe src="https://www.youtube.com/embed/6GRK1bydtFw" title="Video Project 03" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 03 — Media Campaign</div>
       </div>
+
+      <!-- Video 4 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/OskU145ncsE" title="Project 04" allowfullscreen></iframe>
-        <div class="cap">Social Media Ad — MMBS Project 04</div>
+        <iframe src="https://www.youtube.com/embed/OskU145ncsE" title="Video Project 04" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 04 — Social Media Ad</div>
       </div>
+
+      <!-- Video 5 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/jq-h9OQ3dy0" title="Project 05" allowfullscreen></iframe>
-        <div class="cap">Brand Visuals — MMBS Project 05</div>
+        <iframe src="https://www.youtube.com/embed/jq-h9OQ3dy0" title="Video Project 05" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 05 — Brand Visuals</div>
       </div>
+
+      <!-- Video 6 -->
       <div class="video">
-        <iframe src="https://www.youtube.com/embed/LVt8VhpevIg" title="Project 06" allowfullscreen></iframe>
-        <div class="cap">Cinematic Edit — MMBS Project 06</div>
+        <iframe src="https://www.youtube.com/embed/LVt8VhpevIg" title="Video Project 06" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Video Project 06 — Cinematic Edit</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Graphic Design -->
+<!-- Graphic Design Section (with Shimmer & Glow Highlight Effect) -->
 <section id="design">
   <div class="wrap">
     <div class="head">
@@ -544,7 +423,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Core Skills -->
+<!-- Core Skills Section -->
 <section id="skills">
   <div class="wrap">
     <div class="head">
@@ -564,7 +443,7 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   </div>
 </section>
 
-<!-- Contact -->
+<!-- Contact Section -->
 <section id="contact">
   <div class="wrap">
     <div class="head">
@@ -594,15 +473,25 @@ footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:
   <span>Htet Wai Naing — Portfolio</span>
 </footer>
 
-<!-- ====================================================
-     SERVICE & PRICING PLANS LAYER (POPUP FULLSCREEN)
-==================================================== -->
-<div class="service-layer" id="serviceLayer">
-  <!-- Close Button for the Layer -->
-  <button class="layer-close-btn" id="closeServiceLayer" title="Close Layer">✕</button>
+<!-- Lightbox Modal -->
+<div class="modal" id="modal">
+  <div class="close">×</div>
+  <img id="modalImg" alt="Enlarged view">
+</div>
 
-  <div class="wrap">
-    <header class="layer-header">
-      <span>Empowering Your Business Since 2019</span>
-      <h1>MMBS Services & Pricing Plans</h1>
-      <p style="color:#a1a1aa;max-width:650px;margin:a
+<script>
+// Image click popup preview
+const m = document.getElementById('modal');
+const mi = document.getElementById('modalImg');
+document.querySelectorAll('.design img').forEach(img => {
+  img.onclick = () => {
+    mi.src = img.src;
+    m.classList.add('open');
+  };
+});
+document.querySelector('.close').onclick = () => m.classList.remove('open');
+m.onclick = (e) => { if(e.target === m) m.classList.remove('open'); };
+</script>
+
+</body>
+</html>
