@@ -7,209 +7,472 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#080808;color:#f5f5f5;font-family:Arial,sans-serif;line-height:1.6}
-a{color:inherit;text-decoration:none}
-.wrap{max-width:1200px;margin:auto;padding:0 28px}
-
-/* Nav */
-nav{position:sticky;top:0;z-index:10;background:#080808ee;border-bottom:1px solid #252525;backdrop-filter:blur(8px)}
-.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:800;letter-spacing:.08em}
-.links{display:flex;gap:22px;font-size:13px;color:#aaa}
-
-/* Hero */
-.hero{min-height:85vh;display:flex;align-items:center;border-bottom:1px solid #252525}
-.eyebrow{color:#888;font-size:12px;letter-spacing:.2em;margin-bottom:20px}
-h1{font-size:clamp(60px,11vw,145px);line-height:.85;letter-spacing:-.07em;margin:0}
-.hero p{max-width:700px;color:#aaa;font-size:18px;margin-top:35px}
-.btn{display:inline-block;border:1px solid #444;border-radius:30px;padding:11px 20px;margin:10px 8px 0 0;font-size:13px}
-.primary{background:#fff;color:#000;border-color:#fff}
-
-/* Sections */
-section{padding:100px 0;border-bottom:1px solid #252525}
-.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:45px}
-.head h2{font-size:clamp(40px,6vw,76px);line-height:.9;letter-spacing:-.05em;margin:0}
-.head span{font-size:12px;color:#666;letter-spacing:.15em}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:60px}
-.about p{font-size:18px;color:#c5c5c5}
-
-/* Grids */
-.profs,.skills,.videos,.designs{display:grid;gap:14px}
-.profs{grid-template-columns:1fr 1fr}
-.prof,.skill,.video{background:#111;border:1px solid #252525;border-radius:17px;padding:22px}
-.prof b{display:block;margin-bottom:8px}
-.prof span{color:#999;font-size:14px}
-
-/* Video Section (Mobile-friendly aspect ratio) */
-.videos{grid-template-columns:repeat(3,1fr)}
-.video{padding:0;overflow:hidden}
-.video-wrapper{position:relative;width:100%;padding-top:56.25%;background:#000}
-.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-.cap{padding:16px;color:#999;font-size:13px;display:flex;justify-content:space-between;align-items:center}
-.cap a{color:#4ea8de;font-size:12px;text-decoration:underline}
-
-/* Designs */
-.designs{grid-template-columns:repeat(4,1fr)}
-.design{border:1px solid #252525;border-radius:14px;overflow:hidden;cursor:pointer}
-.design img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
-
-/* Skills */
-.skills{grid-template-columns:repeat(4,1fr)}
-.skill{min-height:150px}
-.skill small{color:#666}
-.skill h3{margin-top:50px}
-
-/* Contact */
-.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}
-.contact h2{font-size:clamp(50px,7vw,90px);line-height:.9;margin:0}
-.contact p{color:#999}
-.detail{padding:18px 0;border-bottom:1px solid #252525}
-.detail small{display:block;color:#666;font-size:10px;letter-spacing:.16em;margin-bottom:5px}
-.detail strong{font-size:16px}
-.detail a:hover{opacity:.65}
-
-/* Modal */
-.modal{display:none;position:fixed;inset:0;background:#000e;z-index:30;align-items:center;justify-content:center;padding:20px}
-.modal.open{display:flex}
-.modal img{max-width:95%;max-height:90%}
-.close{position:fixed;right:25px;top:15px;font-size:35px;cursor:pointer}
-
-/* Footer */
-footer{padding:28px 0;color:#666;font-size:12px;display:flex;justify-content:space-between}
-
-/* Responsive queries */
-@media(max-width:992px){
-  .videos{grid-template-columns:repeat(2,1fr)}
+body{
+  margin:0;
+  background:#09090b;
+  color:#f5f5f5;
+  font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height:1.6;
+  position:relative;
+  overflow-x:hidden;
 }
-@media(max-width:800px){
-  .links{display:none}
-  .about,.contact{grid-template-columns:1fr}
+
+/* Background Animated MMBS Watermark (20% Opacity) */
+body::before{
+  content:"MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS  MMBS ";
+  position:fixed;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  z-index:-1;
+  font-size:75px;
+  font-weight:900;
+  color:rgba(255,255,255,0.035);
+  display:flex;
+  flex-wrap:wrap;
+  gap:100px 140px;
+  transform:rotate(-18deg);
+  pointer-events:none;
+  animation:watermarkFloat 35s linear infinite;
+}
+@keyframes watermarkFloat{
+  0%{transform:rotate(-18deg) translateY(0);}
+  50%{transform:rotate(-18deg) translateY(-80px);}
+  100%{transform:rotate(-18deg) translateY(0);}
+}
+
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:auto;padding:0 24px}
+
+/* Sticky Navbar with Cat Animation */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(9,9,11,0.85);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #222;
+}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between}
+.brand-box{display:flex;align-items:center;gap:10px}
+.brand{font-weight:800;letter-spacing:.08em;font-size:18px}
+.cat-anim{
+  display:inline-block;
+  font-size:22px;
+  animation:catBounce 2s ease-in-out infinite;
+  transform-origin:bottom center;
+}
+@keyframes catBounce{
+  0%, 100%{transform:translateY(0) rotate(0deg);}
+  30%{transform:translateY(-6px) rotate(-8deg);}
+  60%{transform:translateY(-2px) rotate(8deg);}
+}
+.links{display:flex;gap:22px;font-size:14px;color:#aaa}
+.links a:hover{color:#fff}
+
+/* Hero Section (Card Profile Style) */
+.hero{
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+  padding:80px 0 60px;
+  border-bottom:1px solid #1f1f23;
+}
+.hero-card{
+  background:#121215;
+  border:1px solid #26262b;
+  border-radius:28px;
+  padding:45px;
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:45px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+.profile-img-wrap{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1.1;
+  border-radius:22px;
+  overflow:hidden;
+  border:2px solid #2e2e38;
+  background:#1a1a1f;
+}
+.profile-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.profile-tag{
+  position:absolute;
+  bottom:12px;
+  left:12px;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(6px);
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:11px;
+  color:#bbb;
+  border:1px solid rgba(255,255,255,0.1);
+}
+.hero-content{display:flex;flex-direction:column;justify-content:center}
+.sub-name{font-size:15px;color:#888;text-transform:uppercase;letter-spacing:2px;margin:0 0 4px}
+.hero-title{font-size:clamp(36px,5vw,56px);font-weight:900;line-height:1;margin:0 0 10px;color:#fff}
+.role-badge{display:inline-block;color:#38bdf8;font-size:15px;font-weight:600;margin-bottom:18px}
+.bio-text{color:#b3b3b3;font-size:15px;line-height:1.7;margin:0 0 22px}
+
+/* Client & Project History Tags */
+.client-box{
+  background:#17171c;
+  border:1px solid #26262d;
+  padding:16px 20px;
+  border-radius:14px;
+  margin-bottom:24px;
+}
+.client-box b{display:block;font-size:12px;color:#888;letter-spacing:1px;margin-bottom:8px;text-transform:uppercase}
+.client-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag-item{background:#23232a;font-size:12px;padding:4px 12px;border-radius:8px;color:#e2e2e2;border:1px solid #33333d}
+
+/* Tech Badges with Status Bars */
+.software-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));
+  gap:12px;
+  margin-top:10px;
+}
+.soft-card{
+  background:#17171d;
+  border:1px solid #26262e;
+  padding:10px 14px;
+  border-radius:10px;
+}
+.soft-info{display:flex;justify-content:space-between;font-size:12px;font-weight:bold;margin-bottom:6px}
+.soft-meter{display:flex;gap:4px}
+.soft-meter span{height:4px;flex:1;background:#2a2a35;border-radius:2px}
+.soft-meter span.active{background:#38bdf8}
+.soft-meter.ai span.active{background:#f97316}
+.soft-meter.ae span.active{background:#818cf8}
+.soft-meter.pr span.active{background:#c084fc}
+
+/* Sections General */
+section{padding:90px 0;border-bottom:1px solid #1f1f23}
+.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:40px}
+.head h2{font-size:clamp(32px,5vw,56px);line-height:.95;margin:0;letter-spacing:-.03em}
+.head span{font-size:12px;color:#71717a;letter-spacing:.15em}
+
+/* Video Showcase (Clean & Working Fallback Players) */
+.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.video{
+  background:#131317;
+  border:1px solid #24242c;
+  border-radius:18px;
+  overflow:hidden;
+  transition:transform .3s;
+}
+.video:hover{transform:translateY(-4px)}
+.video iframe, .video video{
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  display:block;
+  background:#000;
+}
+.cap{padding:16px;color:#a1a1aa;font-size:13px;font-weight:500}
+
+/* Graphic Design Highlight & Shimmer Animation */
+.designs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.design{
+  position:relative;
+  border:1px solid #26262f;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  background:#121216;
+  transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.design img{
+  width:100%;
+  aspect-ratio:1;
+  object-fit:cover;
+  display:block;
+  transition:filter .4s ease, transform .4s ease;
+  filter:brightness(0.92);
+}
+/* Shimmer Light beam */
+.design::after{
+  content:'';
+  position:absolute;
+  top:-60%;
+  left:-100%;
+  width:60%;
+  height:220%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform:rotate(30deg);
+  pointer-events:none;
+  transition:left 0.7s ease;
+}
+.design:hover{
+  transform:translateY(-6px) scale(1.02);
+  border-color:#60a5fa;
+  box-shadow:0 0 25px rgba(96,165,250,0.35);
+}
+.design:hover img{
+  filter:brightness(1.15) contrast(1.05);
+}
+.design:hover::after{
+  left:180%;
+}
+
+/* Core Skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.skill{
+  background:#131317;
+  border:1px solid #22222a;
+  border-radius:16px;
+  padding:22px;
+  min-height:140px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.skill small{color:#64748b;font-weight:bold}
+.skill h3{margin:0;font-size:18px}
+
+/* Contact Section */
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:60px}
+.detail{padding:16px 0;border-bottom:1px solid #22222a}
+.detail small{display:block;color:#71717a;font-size:11px;letter-spacing:.12em;margin-bottom:4px}
+.detail strong{font-size:16px}
+
+/* Modal Popup for Photos */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.92);
+  z-index:200;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+.modal.open{display:flex}
+.modal img{max-width:92%;max-height:88%;border-radius:12px;border:1px solid #444}
+.close{position:fixed;right:25px;top:20px;font-size:40px;cursor:pointer;color:#bbb}
+.close:hover{color:#fff}
+
+footer{padding:30px 0;color:#71717a;font-size:13px;display:flex;justify-content:space-between}
+
+/* Responsiveness */
+@media(max-width:900px){
+  .hero-card{grid-template-columns:1fr;padding:28px}
+  .profile-img-wrap{max-width:320px;margin:0 auto 20px}
   .videos{grid-template-columns:1fr}
   .designs{grid-template-columns:1fr 1fr}
   .skills{grid-template-columns:1fr 1fr}
-  .profs{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr}
+  .links{display:none}
 }
-@media(max-width:480px){
+@media(max-width:500px){
+  .designs{grid-template-columns:1fr}
   .skills{grid-template-columns:1fr}
-  .wrap{padding:0 18px}
+  .software-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
-<nav><div class="wrap nav"><a class="brand" href="#">MMBS-MYANMAR</a><div class="links"><a href="#about">About</a><a href="#videos">Videos</a><a href="#design">Design</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></div></nav>
 
-<header class="hero"><div class="wrap">
-<div class="eyebrow">DIGITAL SOLUTIONS · MEDIA · MARKETING</div>
-<h1>HTET<br>WAI NAING</h1>
-<p>Digital solutions and media specialist helping businesses scale, create impactful digital identities, and move confidently into the digital world.</p>
-<a class="btn primary" href="#videos">View Work</a><a class="btn" href="#contact">Contact Me</a>
-</div></header>
-
-<section id="about"><div class="wrap">
-<div class="head"><h2>ABOUT<br>ME</h2><span>01 / PROFILE</span></div>
-<div class="about"><div>
-<p>Hi, I’m <strong>Htet Wai Naing</strong>, a digital solutions and media specialist with a strong background in creative production, web development, and digital marketing. Representing <strong>MMBS-MYANMAR (Multi-Media Boosting Services In Myanmar)</strong>, I have been helping local businesses scale and go digital since 2019.</p>
-<p>With experience supporting over <strong>50+ businesses</strong>, I specialize in delivering end-to-end digital services—combining modern <strong>Website Development & POS systems</strong>, high-end <strong>Creative Content & Media Production</strong>, and <strong>Strategic Media Buying / Boosting</strong> to drive tangible business growth.</p>
-<p>My mission is to bridge technology and creative media to empower businesses and build impactful digital identities.</p>
-</div><div class="profs">
-<div class="prof"><b>Business & Tech Solutions</b><span>Website Development, POS Systems, and All-in-One Digital Platforms</span></div>
-<div class="prof"><b>Creative & Visual Production</b><span>High-End Cinema Camera Shooting, Professional Video Editing, Graphic Design, 2D/3D Animation & Logo Branding</span></div>
-<div class="prof"><b>Digital Marketing & Strategy</b><span>Facebook, TikTok, Instagram, YouTube advertising and performance-driven boosting</span></div>
-<div class="prof"><b>Project Management & Data Analysis</b><span>Timely delivery, resource allocation, KPI tracking, and ROI-focused campaign optimization</span></div>
-</div></div></div></section>
-
-<!-- Video Showcase (Total 6 Videos) -->
-<section id="videos"><div class="wrap">
-<div class="head"><h2>VIDEO<br>SHOWCASE</h2><span>02 / MEDIA</span></div>
-<div class="videos">
-
-  <!-- Video 01 -->
-  <div class="video">
-    <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+<!-- Navbar with Cat Animation -->
+<nav>
+  <div class="wrap nav">
+    <div class="brand-box">
+      <a class="brand" href="#">MMBS-MYANMAR</a>
+      <span class="cat-anim" title="Meow!">🐱✨</span>
     </div>
-    <div class="cap"><span>Video Project 01 — Creative Production</span><a href="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/view" target="_blank" rel="noopener">Open ↗</a></div>
-  </div>
-
-  <!-- Video 02 -->
-  <div class="video">
-    <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    <div class="links">
+      <a href="#about">Profile</a>
+      <a href="#videos">Videos</a>
+      <a href="#design">Graphic Design</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
     </div>
-    <div class="cap"><span>Video Project 02 — Commercial / Social Media</span><a href="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/view" target="_blank" rel="noopener">Open ↗</a></div>
   </div>
+</nav>
 
-  <!-- Video 03 -->
-  <div class="video">
-    <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+<!-- Hero Section Styled as the Card Design -->
+<header class="hero" id="about">
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="profile-img-wrap">
+        <!-- သင့်ပုံအသစ် design-1.webp သို့မဟုတ် ပုံဖိုင်နာမည်ထည့်ပါ -->
+        <img src="design-1.webp" alt="Htet Wai Naing Profile">
+        <div class="profile-tag">Age 24 • Graduating in 2027</div>
+      </div>
+
+      <div class="hero-content">
+        <div class="sub-name">MMBS-MYANMAR Media Specialist</div>
+        <h1 class="hero-title">Htet Wai Naing</h1>
+        <div class="role-badge">Digital Solutions & Creative Media Director</div>
+        
+        <p class="bio-text">
+          အသက် ၂၄ နှစ်ရှိပြီး ၂၀၂၇ ခုနှစ်တွင် ဘွဲ့ရရှိမည့် Media & Digital Specialist ဖြစ်ပါသည်။ MMBS-MYANMAR ဖြင့်အတူ Local စီးပွားရေးလုပ်ငန်းပေါင်း ၃၀ ကျော်အတွက် Video Production, Graphic Design, Website Development နှင့် Marketing Solutions များကို အောင်မြင်စွာ တာဝန်ယူ ဆောင်ရွက်ပေးလျက်ရှိပါသည်။
+        </p>
+
+        <!-- Collaborations / Businesses Worked With -->
+        <div class="client-box">
+          <b>Key Brand Collaborations & Clients</b>
+          <div class="client-tags">
+            <span class="tag-item">Hebe Hair Salon</span>
+            <span class="tag-item">Yone Beauty Salon</span>
+            <span class="tag-item">Godzilla Bar</span>
+            <span class="tag-item">AEP Private High School</span>
+            <span class="tag-item">Run Way Super Model Agency</span>
+            <span class="tag-item">+ 30 More Local Businesses in Mandalay</span>
+          </div>
+        </div>
+
+        <!-- Software Skills Badges & Bars -->
+        <div class="software-grid">
+          <div class="soft-card">
+            <div class="soft-info"><span>Photoshop</span><span>95%</span></div>
+            <div class="soft-meter"><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span></span></div>
+          </div>
+          <div class="soft-card">
+            <div class="soft-info"><span>Illustrator</span><span>90%</span></div>
+            <div class="soft-meter ai"><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span></span></div>
+          </div>
+          <div class="soft-card">
+            <div class="soft-info"><span>Premiere Pro</span><span>95%</span></div>
+            <div class="soft-meter pr"><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span><span class="active"></span></div>
+          </div>
+          <div class="soft-card">
+            <div class="soft-info"><span>After Effects</span><span>85%</span></div>
+            <div class="soft-meter ae"><span class="active"></span><span class="active"></span><span class="active"></span><span></span><span></span></div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="cap"><span>Video Project 03 — Camera & Editing</span><a href="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/view" target="_blank" rel="noopener">Open ↗</a></div>
   </div>
+</header>
 
-  <!-- Video 04 -->
-  <div class="video">
-    <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+<!-- Video Showcase Section -->
+<section id="videos">
+  <div class="wrap">
+    <div class="head">
+      <h2>VIDEO<br>SHOWCASE</h2>
+      <span>02 / MEDIA PRODUCTION</span>
     </div>
-    <div class="cap"><span>Video Project 04 — Brand Storytelling</span><a href="https://drive.google.com/file/d/1nCRRkC7HoATmWD7rnlC7LVE7U6fonq2m/view" target="_blank" rel="noopener">Open ↗</a></div>
-  </div>
-
-  <!-- Video 05 -->
-  <div class="video">
-    <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+    
+    <div class="videos">
+      <!-- Video 1 (YouTube Embed သုံးနိုင်ပါသည်) -->
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Project 01" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Commercial Video — Brand Production</div>
+      </div>
+      <!-- Video 2 -->
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Project 02" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Social Media Creative Ads — MMBS Project</div>
+      </div>
+      <!-- Video 3 -->
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Project 03" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="cap">Camera & Cinematic Editing Showcase</div>
+      </div>
     </div>
-    <div class="cap"><span>Video Project 05 — Motion & Visuals</span><a href="https://drive.google.com/file/d/1Sz1LvB5vLxFdeNlcfUCOsLA1DfK56Seh/view" target="_blank" rel="noopener">Open ↗</a></div>
   </div>
+</section>
 
-  <!-- Video 06 -->
-  <div class="video">
-    <div class="video-wrapper">
-      <iframe src="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/preview" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+<!-- Graphic Design Section (with Shimmer & Glow Highlight Effect) -->
+<section id="design">
+  <div class="wrap">
+    <div class="head">
+      <h2>GRAPHIC<br>DESIGN</h2>
+      <span>03 / VISUAL WORKS</span>
     </div>
-    <div class="cap"><span>Video Project 06 — Digital Campaign</span><a href="https://drive.google.com/file/d/1bQM8COSjbqh7PQIVBwA-xg7_ArC26NFk/view" target="_blank" rel="noopener">Open ↗</a></div>
+    <div class="designs">
+      <div class="design"><img src="design-1.webp" alt="Work 1"></div>
+      <div class="design"><img src="design-2.webp" alt="Work 2"></div>
+      <div class="design"><img src="design-3.webp" alt="Work 3"></div>
+      <div class="design"><img src="design-4.webp" alt="Work 4"></div>
+      <div class="design"><img src="design-5.webp" alt="Work 5"></div>
+      <div class="design"><img src="design-6.webp" alt="Work 6"></div>
+      <div class="design"><img src="design-7.webp" alt="Work 7"></div>
+      <div class="design"><img src="design-8.webp" alt="Work 8"></div>
+    </div>
   </div>
+</section>
 
-</div></div></section>
+<!-- Core Skills Section -->
+<section id="skills">
+  <div class="wrap">
+    <div class="head">
+      <h2>CORE<br>SKILLS</h2>
+      <span>04 / CAPABILITIES</span>
+    </div>
+    <div class="skills">
+      <div class="skill"><small>01</small><h3>Video Shooting & Editing</h3></div>
+      <div class="skill"><small>02</small><h3>Graphic & Brand Design</h3></div>
+      <div class="skill"><small>03</small><h3>Digital Marketing & Boosting</h3></div>
+      <div class="skill"><small>04</small><h3>Website & POS Development</h3></div>
+      <div class="skill"><small>05</small><h3>2D / 3D Animation</h3></div>
+      <div class="skill"><small>06</small><h3>Social Media Strategy</h3></div>
+      <div class="skill"><small>07</small><h3>Brand Identity & Logo</h3></div>
+      <div class="skill"><small>08</small><h3>Media Buying & Optimization</h3></div>
+    </div>
+  </div>
+</section>
 
-<section id="design"><div class="wrap">
-<div class="head"><h2>GRAPHIC<br>DESIGN</h2><span>03 / VISUAL</span></div>
-<div class="designs">
-<div class="design"><img src="design-1.webp"></div><div class="design"><img src="design-2.webp"></div>
-<div class="design"><img src="design-3.webp"></div><div class="design"><img src="design-4.webp"></div>
-<div class="design"><img src="design-5.webp"></div><div class="design"><img src="design-6.webp"></div>
-<div class="design"><img src="design-7.webp"></div><div class="design"><img src="design-8.webp"></div>
-</div></div></section>
+<!-- Contact Section -->
+<section id="contact">
+  <div class="wrap">
+    <div class="head">
+      <h2>LET'S<br>WORK.</h2>
+      <span>05 / CONTACT</span>
+    </div>
+    <div class="contact">
+      <div>
+        <p style="color:#aaa;font-size:18px;">
+          Website၊ POS စနစ်များမှစ၍ ဖန်တီးမှုအပြည့်ပါဝင်သော Media Production နှင့် Digital Ads Campaign များအထိ စီးပွားရေးလုပ်ငန်းတိုးတက်စေရန် အတူလက်တွဲလုပ်ဆောင်ကြပါစို့။
+        </p>
+      </div>
+      <div>
+        <div class="detail"><small>AGENCY</small><strong>MMBS-MYANMAR</strong></div>
+        <div class="detail"><small>NAME</small><strong>Htet Wai Naing (Age 24)</strong></div>
+        <div class="detail"><small>EDUCATION</small><strong>Bachelor Degree (Graduating 2027)</strong></div>
+        <div class="detail"><small>EMAIL</small><strong><a href="mailto:htetwainaing169@gmail.com">htetwainaing169@gmail.com</a></strong></div>
+        <div class="detail"><small>PHONE</small><strong><a href="tel:09692698685">09692698685</a></strong></div>
+        <div class="detail"><small>LOCATION</small><strong>Mandalay, Myanmar</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section id="skills"><div class="wrap">
-<div class="head"><h2>CORE<br>SKILLS</h2><span>04 / CAPABILITIES</span></div>
-<div class="skills">
-<div class="skill"><small>01</small><h3>Video Editing</h3></div><div class="skill"><small>02</small><h3>Camera Shooting</h3></div>
-<div class="skill"><small>03</small><h3>Graphic Design</h3></div><div class="skill"><small>04</small><h3>Digital Marketing</h3></div>
-<div class="skill"><small>05</small><h3>Web Development</h3></div><div class="skill"><small>06</small><h3>POS Systems</h3></div>
-<div class="skill"><small>07</small><h3>2D / 3D Animation</h3></div><div class="skill"><small>08</small><h3>Media Buying</h3></div>
-</div></div></section>
+<footer class="wrap">
+  <span>© 2026 MMBS-MYANMAR</span>
+  <span>Htet Wai Naing — Portfolio</span>
+</footer>
 
-<section id="contact"><div class="wrap">
-<div class="head"><h2>LET'S<br>WORK.</h2><span>05 / CONTACT</span></div>
-<div class="contact"><div><p>If you are looking for a complete digital solution—from website and POS systems to creative media production and digital marketing—let’s build something impactful together.</p></div>
-<div>
-<div class="detail"><small>AGENCY</small><strong>MMBS-MYANMAR</strong></div>
-<div class="detail"><small>NAME</small><strong>Htet Wai Naing</strong></div>
-<div class="detail"><small>EMAIL</small><strong><a href="mailto:htetwainaing169@gmail.com">htetwainaing169@gmail.com</a></strong></div>
-<div class="detail"><small>PHONE</small><strong><a href="tel:09692698685">09692698685</a></strong></div>
-<div class="detail"><small>LOCATION</small><strong>Mandalay, Myanmar</strong></div>
-</div></div></div></section>
+<!-- Lightbox Modal -->
+<div class="modal" id="modal">
+  <div class="close">×</div>
+  <img id="modalImg" alt="Enlarged view">
+</div>
 
-<footer class="wrap"><span>© 2026 MMBS-MYANMAR</span><span>Htet Wai Naing — Digital Solutions & Media</span></footer>
-
-<div class="modal" id="modal"><div class="close">×</div><img id="modalImg"></div>
 <script>
-const m=document.getElementById('modal'),mi=document.getElementById('modalImg');
-document.querySelectorAll('.design img').forEach(i=>i.onclick=()=>{mi.src=i.src;m.classList.add('open')});
-document.querySelector('.close').onclick=()=>m.classList.remove('open');
-m.onclick=e=>{if(e.target===m)m.classList.remove('open')};
+// Image click popup preview
+const m = document.getElementById('modal');
+const mi = document.getElementById('modalImg');
+document.querySelectorAll('.design img').forEach(img => {
+  img.onclick = () => {
+    mi.src = img.src;
+    m.classList.add('open');
+  };
+});
+document.querySelector('.close').onclick = () => m.classList.remove('open');
+m.onclick = (e) => { if(e.target === m) m.classList.remove('open'); };
 </script>
+
 </body>
 </html>
